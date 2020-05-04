@@ -1,0 +1,217 @@
+matQPlusInt = Table[If[(susyQPlusCode`Private`nBL == 
+         susyQPlusCode`Private`nBR || susyQPlusCode`Private`nBL == 
+         susyQPlusCode`Private`nBR + 2) && susyQPlusCode`Private`nFL + 1 == 
+        susyQPlusCode`Private`nFR, Catch[ArrayFlatten[
+        Outer[susyQPlusCode`Private`primBlockInt, 
+         (If[Length[#1] == 0, Throw[{}], #1] & )[
+          Insert[PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{}, 
+             Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], 
+             {{}}]][[susyQPlusCode`Private`nBL + 1,
+           susyQPlusCode`Private`nFL + 1]]], 
+         (If[Length[#1] == 0, Throw[{}], #1] & )[
+          Insert[PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{}, 
+             Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], 
+             {{}}]][[susyQPlusCode`Private`nBR + 1,
+           susyQPlusCode`Private`nFR + 1]]], 1]]], 
+      SparseArray[{}, {susyQPlusCode`Private`stateCount[
+         Insert[PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{}, 
+            Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], {{}}]][[
+          susyQPlusCode`Private`nBL + 1,susyQPlusCode`Private`nFL + 1]]], 
+        susyQPlusCode`Private`stateCount[Insert[PadRight[{}, Insert[0, 0, 2], 
+            {{}}], PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{1, 1}, 
+            Insert[0, 0, 2], {{}}]][[susyQPlusCode`Private`nBR + 1,
+          susyQPlusCode`Private`nFR + 1]]]}]], {susyQPlusCode`Private`nBL, 0, 
+      2}, {susyQPlusCode`Private`nBR, 0, 2}, {susyQPlusCode`Private`nFL, 0, 
+      -1 + {3}[[2]]}, {susyQPlusCode`Private`nFR, 0, -1 + {3}[[2]]}]
+ 
+susyQPlusCode`Private`primBlockInt = Function[{susyQPlusCode`Private`level1, 
+      susyQPlusCode`Private`level2}, With[{susyQPlusCode`Private`dnF = 1, 
+       susyQPlusCode`Private`lL = susyQPlusCode`Private`level1["l"], 
+       susyQPlusCode`Private`lR = susyQPlusCode`Private`level2["l"], 
+       susyQPlusCode`Private`degBL = susyQPlusCode`Private`level1["degB"], 
+       susyQPlusCode`Private`degBR = susyQPlusCode`Private`level2["degB"], 
+       susyQPlusCode`Private`degFL = susyQPlusCode`Private`level1["degF"], 
+       susyQPlusCode`Private`degFR = susyQPlusCode`Private`level2["degF"], 
+       susyQPlusCode`Private`nBL = susyQPlusCode`Private`level1["nB"], 
+       susyQPlusCode`Private`nBR = susyQPlusCode`Private`level2["nB"], 
+       susyQPlusCode`Private`nFL = susyQPlusCode`Private`level1["nF"]}, 
+      SparseArray[Outer[Total[Table[Flatten[#1[[susyQPlusCode`Private`kL + 
+                1]]] . susyQPlusCode`Private`monomialBlockInt[
+              {susyQPlusCode`Private`nBL, susyQPlusCode`Private`nBR}, 
+              {susyQPlusCode`Private`nFL}, {susyQPlusCode`Private`degBL + 
+                susyQPlusCode`Private`kL, susyQPlusCode`Private`degBR + 
+                susyQPlusCode`Private`kR}, {susyQPlusCode`Private`degFL + 
+                susyQPlusCode`Private`lL - susyQPlusCode`Private`kL, 
+               susyQPlusCode`Private`degFR + susyQPlusCode`Private`lR - 
+                susyQPlusCode`Private`kR}] . Flatten[
+              #2[[susyQPlusCode`Private`kR + 1]]], {susyQPlusCode`Private`kL, 
+             0, susyQPlusCode`Private`lL}, {susyQPlusCode`Private`kR, 0, 
+             susyQPlusCode`Private`lR}], 2] & , susyQPlusCode`Private`level1[
+          "states"], susyQPlusCode`Private`level2["states"], 1]]*
+       susyQPlusCode`Private`factor[susyQPlusCode`Private`nBL + 
+         (3*susyQPlusCode`Private`nFL)/2 + susyQPlusCode`Private`degBL + 
+         susyQPlusCode`Private`degFL + susyQPlusCode`Private`lL, 
+        susyQPlusCode`Private`nBR + (3*(susyQPlusCode`Private`nFL + 
+            susyQPlusCode`Private`dnF))/2 + susyQPlusCode`Private`degBR + 
+         susyQPlusCode`Private`degFR + susyQPlusCode`Private`lR]]]
+ 
+susyQPlusCode`Private`monomialBlockInt[{susyQPlusCode`Private`nBL_, 
+      susyQPlusCode`Private`nBR_}, {susyQPlusCode`Private`nFL_}, 
+     {susyQPlusCode`Private`degB1_, susyQPlusCode`Private`degB2_}, 
+     {susyQPlusCode`Private`degF1_, susyQPlusCode`Private`degF2_}] := 
+    susyQPlusCode`Private`monomialBlockInt[{susyQPlusCode`Private`nBL, 
+       susyQPlusCode`Private`nBR}, {susyQPlusCode`Private`nFL}, 
+      {susyQPlusCode`Private`degB1, susyQPlusCode`Private`degB2}, 
+      {susyQPlusCode`Private`degF1, susyQPlusCode`Private`degF2}] = 
+     With[{susyQPlusCode`Private`a1List = 
+        (susyQPlusCode`Private`cfBinCount[#1, 
+           Max[susyQPlusCode`Private`degB1, susyQPlusCode`Private`degB2] + 
+            1] & ) /@ susyQPlusCode`Private`monomialsBoson[
+          susyQPlusCode`Private`nBL, susyQPlusCode`Private`degB1], 
+       susyQPlusCode`Private`a2List = (susyQPlusCode`Private`cfBinCount[#1, 
+           Max[susyQPlusCode`Private`degB1, susyQPlusCode`Private`degB2] + 
+            1] & ) /@ susyQPlusCode`Private`monomialsBoson[
+          susyQPlusCode`Private`nBR, susyQPlusCode`Private`degB2], 
+       susyQPlusCode`Private`b1List = (susyQPlusCode`Private`cfBinCount[#1, 
+           Max[susyQPlusCode`Private`degF1, susyQPlusCode`Private`degF2] + 
+            1] & ) /@ susyQPlusCode`Private`monomialsFermion[
+          susyQPlusCode`Private`nFL, susyQPlusCode`Private`degF1], 
+       susyQPlusCode`Private`b2List = (susyQPlusCode`Private`cfBinCount[#1, 
+           Max[susyQPlusCode`Private`degF1, susyQPlusCode`Private`degF2] + 
+            1] & ) /@ susyQPlusCode`Private`monomialsFermion[
+          susyQPlusCode`Private`nFL + 1, susyQPlusCode`Private`degF2]}, 
+      SparseArray[Outer[susyQPlusCode`Private`qPlusInt, 
+        Flatten[Outer[List, susyQPlusCode`Private`a1List, 
+          susyQPlusCode`Private`b1List, 1], 1], 
+        Flatten[Outer[List, susyQPlusCode`Private`a2List, 
+          susyQPlusCode`Private`b2List, 1], 1], 1]]]
+ 
+susyQPlusCode`Private`cfBinCount = CompiledFunction[{11, 12., 5468}, 
+     {{_Integer, 1}, _Integer}, {{2, 1, 0}, {2, 0, 0}, {2, 1, 2}}, 
+     {{0, {2, 0, 4}}, {1, {2, 0, 2}}}, {0, 10, 0, 0, 3}, 
+     {{6, 0, 6}, {6, 4, 3}, {35, 6, 2, 2}, {6, 4, 5}, {3, 2}, 
+      {36, 3, 4, 2, 2}, {4, 5, 6, -1}, {33, 0, 6}, {6, 4, 8}, {3, 6}, 
+      {37, 0, 8, 2, 1}, {38, 2, 0, 1, 0, 9}, {37, 0, 8, 2, 1}, {12, 9, 2, 7}, 
+      {39, 2, 0, 1, 0, 7}, {4, 8, 6, -5}, {1}}, 
+     Function[{susyQPlusCode`Private`k, susyQPlusCode`Private`max}, 
+      Module[{susyQPlusCode`Private`lst}, susyQPlusCode`Private`lst = 
+         Table[0, {susyQPlusCode`Private`max}]; 
+        Scan[susyQPlusCode`Private`lst[[#1]]++ & , susyQPlusCode`Private`k]; 
+        susyQPlusCode`Private`lst]], Evaluate, LibraryFunction["/Users/yuan/L\
+ibrary/Mathematica/ApplicationData/CCompilerDriver/BuildFolder/Yuans-MacBook-\
+Pro-76608/compiledFunction50.dylib", "compiledFunction50", 
+      {{Integer, 1, "Constant"}, {Integer, 0, "Constant"}}, {Integer, 1}]]
+ 
+susyQPlusCode`Private`monomialsBoson[susyQPlusCode`Private`n_, 
+     susyQPlusCode`Private`deg_] := susyQPlusCode`Private`monomialsBoson[
+      susyQPlusCode`Private`n, susyQPlusCode`Private`deg] = 
+     IntegerPartitions[susyQPlusCode`Private`deg + susyQPlusCode`Private`n, 
+      {susyQPlusCode`Private`n}]
+ 
+susyQPlusCode`Private`monomialsFermion[susyQPlusCode`Private`n_, 
+     susyQPlusCode`Private`deg_] := susyQPlusCode`Private`monomialsFermion[
+      susyQPlusCode`Private`n, susyQPlusCode`Private`deg] = 
+     (#1 + Reverse[Range[susyQPlusCode`Private`n] - 1] & ) /@ 
+      susyQPlusCode`Private`monomialsBoson[susyQPlusCode`Private`n, 
+       susyQPlusCode`Private`deg + susyQPlusCode`Private`n - 
+        (susyQPlusCode`Private`n*(susyQPlusCode`Private`n + 1))/2]
+ 
+susyQPlusCode`Private`qPlusInt[{susyQPlusCode`Private`a_, 
+      susyQPlusCode`Private`b_}, {susyQPlusCode`Private`ap_, 
+      susyQPlusCode`Private`bp_}] := Block[{susyQPlusCode`Private`aBar, 
+      susyQPlusCode`Private`apBar, susyQPlusCode`Private`bpBar, 
+      susyQPlusCode`Private`k1, susyQPlusCode`Private`k2, 
+      susyQPlusCode`Private`k0, susyQPlusCode`Private`kbL, 
+      susyQPlusCode`Private`kbR, susyQPlusCode`Private`s0, 
+      susyQPlusCode`Private`s1, susyQPlusCode`Private`s2 = Plus[1], 
+      susyQPlusCode`Private`residues, susyQPlusCode`Private`symFactor, 
+      susyQPlusCode`Private`perm}, susyQPlusCode`Private`aBar = 
+       Ramp[susyQPlusCode`Private`a - susyQPlusCode`Private`ap]; 
+      susyQPlusCode`Private`apBar = Ramp[susyQPlusCode`Private`ap - 
+         susyQPlusCode`Private`a]; susyQPlusCode`Private`bpBar = 
+       Ramp[susyQPlusCode`Private`bp - susyQPlusCode`Private`b]; 
+      If[Total[susyQPlusCode`Private`bpBar] != 1, Return[0]]; 
+      susyQPlusCode`Private`k2 = First[susyQPlusCode`Private`cfBinReconstruct[
+         susyQPlusCode`Private`bpBar]]; susyQPlusCode`Private`perm = 
+       (-1)^(Total[Take[susyQPlusCode`Private`bp, 
+           susyQPlusCode`Private`k2]] - 1); 
+      Which[Total[susyQPlusCode`Private`aBar + 
+          susyQPlusCode`Private`apBar] == 2, 
+       susyQPlusCode`Private`kbL = susyQPlusCode`Private`cfBinReconstruct[
+          susyQPlusCode`Private`aBar]; susyQPlusCode`Private`kbR = 
+         susyQPlusCode`Private`cfBinReconstruct[susyQPlusCode`Private`apBar]; 
+        {susyQPlusCode`Private`k0, susyQPlusCode`Private`k1} = 
+         Join[susyQPlusCode`Private`kbL, susyQPlusCode`Private`kbR]; 
+        {susyQPlusCode`Private`s0, susyQPlusCode`Private`s1} = 
+         Join[susyQPlusCode`Private`kbL*0 - 1, susyQPlusCode`Private`kbR*0 + 
+           1]; susyQPlusCode`Private`residues = 
+         -((susyQPlusCode`Private`residue[-(susyQPlusCode`Private`s0*
+                susyQPlusCode`Private`k0 + susyQPlusCode`Private`s1*
+                susyQPlusCode`Private`k1), susyQPlusCode`Private`k2] - 
+            susyQPlusCode`Private`residue[-(susyQPlusCode`Private`s0*
+               susyQPlusCode`Private`k0), susyQPlusCode`Private`k2] - 
+            susyQPlusCode`Private`residue[-(susyQPlusCode`Private`s1*
+               susyQPlusCode`Private`k1), susyQPlusCode`Private`k2])/
+           Sqrt[susyQPlusCode`Private`k0*susyQPlusCode`Private`k1*
+             susyQPlusCode`Private`k2*(susyQPlusCode`Private`k2 + 1)]); 
+        susyQPlusCode`Private`symFactor = 
+         Times @@ Table[Sqrt[Binomial[susyQPlusCode`Private`a[[
+                susyQPlusCode`Private`k]], susyQPlusCode`Private`aBar[[
+                susyQPlusCode`Private`k]]]/susyQPlusCode`Private`aBar[[
+                susyQPlusCode`Private`k]]!], {susyQPlusCode`Private`k, 
+             DeleteDuplicates[susyQPlusCode`Private`kbL]}]*
+          Times @@ Table[Sqrt[Binomial[susyQPlusCode`Private`ap[[
+                susyQPlusCode`Private`kp]], susyQPlusCode`Private`apBar[[
+                susyQPlusCode`Private`kp]]]/susyQPlusCode`Private`apBar[[
+                susyQPlusCode`Private`kp]]!], {susyQPlusCode`Private`kp, 
+             DeleteDuplicates[susyQPlusCode`Private`kbR]}]; 
+        susyQPlusCode`Private`residues*susyQPlusCode`Private`symFactor*
+         susyQPlusCode`Private`perm, Total[susyQPlusCode`Private`aBar + 
+          susyQPlusCode`Private`apBar] == 0, 
+       (Plus @@ Total[Take[susyQPlusCode`Private`a, 
+            UpTo[susyQPlusCode`Private`k2]]]*susyQPlusCode`Private`perm)/
+        Sqrt[susyQPlusCode`Private`k2*(susyQPlusCode`Private`k2 + 1)], True, 
+       0]]
+ 
+susyQPlusCode`Private`cfBinReconstruct = CompiledFunction[{11, 12., 5468}, 
+     {{_Integer, 1}}, {{2, 1, 0}, {2, 1, 2}}, {{0, {2, 0, 5}}, 
+      {4, {2, 0, 1}}, {1, {2, 0, 0}}}, {2, 11, 0, 0, 3}, 
+     {{6, 0, 2}, {6, 0, 6}, {6, 0, 4}, {42, "TotalAll", 2, 1, 0, 2, 0, 1, 2, 
+       0, 3}, {6, 3, 7}, {6, 5, 9}, {35, 7, 2, 2}, {6, 5, 8}, {3, 2}, 
+      {36, 9, 5, 2, 2}, {4, 8, 7, -1}, {6, 0, 4}, {26, 2, 3, 0}, {2, 0, 17}, 
+      {6, 0, 6}, {38, 0, 0, 4, 0, 8}, {26, 6, 8, 1}, {2, 1, 9}, 
+      {39, 2, 0, 2, 0, 4}, {6, 2, 7}, {12, 7, 0, 10}, {6, 10, 2}, {6, 6, 8}, 
+      {12, 8, 0, 7}, {6, 7, 6}, {3, -10}, {6, 4, 9}, {12, 9, 0, 8}, 
+      {6, 8, 4}, {3, -17}, {1}}, Function[{susyQPlusCode`Private`c}, 
+      Module[{susyQPlusCode`Private`i = 1, susyQPlusCode`Private`j = 1, 
+        susyQPlusCode`Private`k = 1, susyQPlusCode`Private`length = 
+         Total[susyQPlusCode`Private`c], susyQPlusCode`Private`reconstruct}, 
+       susyQPlusCode`Private`reconstruct = Table[0, 
+          {susyQPlusCode`Private`length}]; For[susyQPlusCode`Private`k = 1, 
+         susyQPlusCode`Private`i <= susyQPlusCode`Private`length, 
+         susyQPlusCode`Private`k++, For[susyQPlusCode`Private`j = 1, 
+          susyQPlusCode`Private`j <= susyQPlusCode`Private`c[[
+            susyQPlusCode`Private`k]], susyQPlusCode`Private`j++, 
+          susyQPlusCode`Private`reconstruct[[susyQPlusCode`Private`i]] = 
+            susyQPlusCode`Private`k; susyQPlusCode`Private`i++]]; 
+        susyQPlusCode`Private`reconstruct]], Evaluate, 
+     LibraryFunction["/Users/yuan/Library/Mathematica/ApplicationData/CCompil\
+erDriver/BuildFolder/Yuans-MacBook-Pro-76608/compiledFunction51.dylib", 
+      "compiledFunction51", {{Integer, 1, "Constant"}}, {Integer, 1}]]
+ 
+susyQPlusCode`Private`residue[susyQPlusCode`Private`k1_, 
+     susyQPlusCode`Private`k2_] := If[Inequality[0, Less, 
+      susyQPlusCode`Private`k1, LessEqual, susyQPlusCode`Private`k2], 
+     susyQPlusCode`Private`k1, 0]
+ 
+susyQPlusCode`Private`factor[susyQPlusCode`Private`\[CapitalDelta]_, 
+     susyQPlusCode`Private`\[CapitalDelta]p_] := 
+    ((-1)^(susyQPlusCode`Private`\[CapitalDelta] - 
+        susyQPlusCode`Private`\[CapitalDelta]p - 1/2)*
+      Sqrt[Gamma[2*susyQPlusCode`Private`\[CapitalDelta]]*
+        Gamma[2*susyQPlusCode`Private`\[CapitalDelta]p]])/
+     Gamma[susyQPlusCode`Private`\[CapitalDelta] + 
+       susyQPlusCode`Private`\[CapitalDelta]p - 1/2]
+ 
+susyQPlusCode`Private`stateCount[susyQPlusCode`Private`lstOfLevels_] := 
+    Total[(Length[#states] & ) /@ susyQPlusCode`Private`lstOfLevels]
