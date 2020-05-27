@@ -1,6 +1,0 @@
-basisN1SUSY = Insert[PadRight[{}, Insert[0, 0, 2], {{}}], 
-     PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], 
-      {{}}]]
-basisN1SUSY = Insert[PadRight[{}, Insert[0, 0, 2], {{}}], 
-     PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], 
-      {{}}]]
