@@ -1,0 +1,6 @@
+- Update the demos affected by the package change
+- add Utilities.wl
+	- add flattenMixonStates[]
+	- add flattenMixonMatrix[]
+- change Basis-Mixon.wl 
+	- computeMixonBasis[] saves output file 

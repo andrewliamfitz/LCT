@@ -1,0 +1,4 @@
+basisFermion = {{ConstantArray[{}, {-1 + \[CapitalDelta]max, 
+        -1 + \[CapitalDelta]max, 0}], {{}, {}}}}
+basisFermion = {{ConstantArray[{}, {-1 + \[CapitalDelta]max, 
+        -1 + \[CapitalDelta]max, 0}], {{}, {}}}}

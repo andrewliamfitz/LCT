@@ -1,0 +1,1003 @@
+\documentclass[12pt]{article} 
+\pdfoutput=1 
+\usepackage{jheppub}
+\usepackage{soul}
+\usepackage{setspace}
+\usepackage{slashed}   
+\usepackage{graphicx,url}
+\usepackage{booktabs}
+\usepackage{bbm}
+\usepackage{braket}
+\usepackage{colortbl}
+\usepackage{amsmath,hyperref,amssymb,cancel,stmaryrd}
+\usepackage{amsfonts}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+\usepackage{slashed}
+\usepackage{mathrsfs}
+\usepackage{verbatim}
+\usepackage[usenames,dvipsnames]{xcolor}
+%\documentclass[12pt]{article}
+\usepackage{color} 
+\let\normalcolor\relax  
+\usepackage{epsfig} 
+\def\half{\frac{1}{2}}
+\def\cn{{\mathcal N}}
+\def\tr{{\rm Tr}} 
+\def\la{\lambda} 
+\def\sl{\slashed} 
+\def\lb{\bar{\lambda}}  
+\def\m{\mu} 
+\def\mb{\bar{\mu}}
+\def\wb{\bar{w}}      
+\def\e{\eta}
+\def\ep{\epsilon} 
+\def\a{\alpha}
+\def\ad{\dot{\alpha}}
+\def\ab{\bar{a}} 
+\def\eb{\tilde{\eta}}
+\def\Qb{\bar{Q}} 
+\def\Or[#1]{{\text{O}}\left({#1}\right)}
+\def\dotl[#1,#2]{\left\langle #1, #2 \right\rangle}
+\def\dotlb[#1,#2]{[ #1, #2 ]}
+\def\dotp[#1,#2]{(#1) \cdot (#2)}
+\def\aff[#1,#2]{\hat{#1}(#2)}
+\def\n4sym{{\cal N}=4 SYM}
+\def\>{\rangle}
+\def\<{\langle}
+\newcommand   \corr   [1] {\left\langle #1 \right\rangle }
+\newcommand   \inner [2] {\< #1 | #2 \>}
+\newcommand   \pa [1] {\left( #1 \right)}
+\def\weight[#1,#2,#3]{\{(#1),#2,#3\}}
+\def\ads[#1]{$\text{AdS}_{#1}$}
+\def\lrdel{\overset{\leftrightarrow}{\nabla}}
+\newcommand{\vect}[1]{{\bf{#1}}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\bal}{\begin{aligned}}
+\newcommand{\eal}{\end{aligned}}
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\bq}{\begin{equation}}
+\newcommand{\eq}{\end{equation}}
+\newcommand{\benn}{\begin{equation*}}
+\newcommand{\eenn}{\end{equation*}}
+\newcommand{\bi}{\begin{itemize}}  
+\newcommand{\ei}{\end{itemize}}
+\renewcommand{\d}{\partial}
+\newcommand{\Poincare}{Poincar\'{e} }
+
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\Acal}{{\mathcal A}} 
+\newcommand{\Bcal}{{\mathcal B}}
+\newcommand{\Ccal}{{\mathcal C}}
+\newcommand{\Dcal}{{\mathcal D}}
+\newcommand{\Ecal}{{\mathcal E}}
+\newcommand{\Fcal}{{\mathcal F}}
+\newcommand{\Gcal}{{\mathcal G}}
+\newcommand{\Hcal}{{\mathcal H}}
+\newcommand{\Ical}{{\mathcal I}} 
+\newcommand{\Jcal}{{\mathcal J}}
+\newcommand{\Kcal}{{\mathcal K}}
+\newcommand{\Lcal}{{\mathcal L}}
+\newcommand{\Mcal}{{\mathcal M}}
+\newcommand{\Ncal}{{\mathcal N}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\Ocal}{{\mathcal O}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\Pcal}{{\mathcal P}}
+\newcommand{\Qcal}{{\mathcal Q}}
+\newcommand{\Rcal}{{\mathcal R}}
+\newcommand{\Scal}{{\mathcal S}}
+\newcommand{\Tcal}{{\mathcal T}}
+\newcommand{\Ucal}{{\mathcal U}}
+\newcommand{\Vcal}{{\mathcal V}}
+\newcommand{\Wcal}{{\mathcal W}}
+\newcommand{\Xcal}{{\mathcal X}}
+\newcommand{\Ycal}{{\mathcal Y}}
+\newcommand{\Zcal}{{\mathcal Z}}
+\newcommand{\CA}{{\cal A}}
+\newcommand{\CS}{{\cal S}}
+\newcommand{\CC}{{\cal C}}
+\newcommand{\CE}{{\cal E}}
+\newcommand{\CF}{{\cal F}}
+\newcommand{\CI}{{\cal I}}
+\newcommand{\CL}{{\cal L}}
+\newcommand{\CJ}{{\cal J}}
+\newcommand{\CM}{{\cal M}}
+\newcommand{\CN}{{\cal N}}
+\newcommand{\CO}{{\cal O}}
+\newcommand{\CP}{{\cal P}}
+\newcommand{\CR}{{\cal R}}
+\newcommand{\CV}{{\cal V}}
+\newcommand{\nn}{\nonumber}
+\renewcommand{\Im}[0]{\operatorname{Im}}
+\renewcommand{\Re}[0]{\operatorname{Re}}
+\newcommand{\blue}{\bf\color{blue}}
+\newcommand{\red}{\bf\color{red}}
+\newcommand{\magenta}{\bf\color{magenta}}
+\newcommand\draftnote[1]{{\blue #1}}
+\newcommand\oo\infty
+\newcommand\s\sigma
+\newcommand\de\delta
+\newcommand\De\Delta
+%\newcommand\p[1]{\left(#1\right)}
+\newcommand{\p}{\partial}
+\newcommand\f\phi
+\newcommand\g\gamma
+\newcommand\x\times
+\newcommand{\nin}{\noindent}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\lra}{\leftrightarrow}
+\newcommand{\fr}{\frac}
+\newcommand{\comm}[2]{[#1,#2]}
+\newcommand{\acomm}[2]{\{#1,#2\}}
+\newcommand{\AdS}{\textrm{AdS}}
+\newcommand{\CFT}{\textrm{CFT}}
+\newcommand{\tfr}{\tfrac}
+\newcommand{\KL}{K\"{a}ll\'{e}n-Lehmann }
+\newcommand{\zb}{\bar{z}}
+\newcommand{\sgn}{{\rm sgn}}
+\newcommand{\eff}{\textrm{eff}}
+\newcommand{\gap}{\textrm{gap}}
+\newcommand{\ET}{\textrm{ET}}
+\newcommand{\LC}{\textrm{LC}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Cmax}{\Ccal_{\max}}
+\newcommand{\Dmax}{\De_{\max}}
+\newcommand\lrpar{\raise .8ex\hbox{$^\leftrightarrow$} \hspace{-9pt}
+\partial}
+\newcommand{\llb}{\llbracket}
+\newcommand{\rrb}{\rrbracket}
+
+\newcommand\G{\Gamma}
+\newcommand\R{\mathbb{R}}
+\renewcommand\th{\theta}
+\newcommand{\gp}{\mathfrak{q}}
+\newcommand{\tB}{\widetilde{\Bcal}}
+\newcommand{\Chat}{\widehat{C}}
+
+\newcommand{\bvec}{\boldsymbol{b}}
+\newcommand{\avec}{\boldsymbol{a}}
+\newcommand{\bb}{\boldsymbol{b}}
+\newcommand{\bk}{\boldsymbol{k}}
+\newcommand{\bl}{\boldsymbol{\ell}}
+\newcommand{\bs}{\boldsymbol{\sigma}}
+\newcommand{\dagg}{\dagger}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\Tr}{\textrm{Tr}}
+\newcommand{\Sun}{SU($N$)}
+\newcommand{\Psibar}{\overline{\Psi}}
+\newcommand{\wh}{\widehat}
+\newcommand{\rket}[1]{\ket{#1}_{\rm RQ}}
+
+
+\usepackage{listings}
+\lstset{language=Mathematica}
+
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+\usepackage{mmacells} 
+\mmaSet{
+  leftmargin=2.3em,
+  labelsep=-0.8em,
+}
+
+\usepackage{afterpage}
+\usepackage{bookmark}
+
+
+
+\newenvironment{monospace}{\ttfamily}{\par}
+\newenvironment{code}{\begin{monospace}\begin{tabbing}}{\end{tabbing}\end{monospace}}
+
+
+
+\newcommand{\Ft}{\widetilde{F}}
+\newcommand{\onevec}{\boldsymbol{1}}
+\newcommand{\twovec}{\boldsymbol{2}}
+\newcommand{\Bvec}{\boldsymbol{\beta}}
+\newcommand{\Lvec}{\boldsymbol{\ell}}
+\newcommand{\J}{{\mathscr J}}
+\newcommand{\kvec}{\boldsymbol{k}}
+\newcommand{\yvec}{\boldsymbol{k}}
+\newcommand{\pvec}{\boldsymbol{p}}
+\newcommand{\pr}[1]{\left(#1 \right)}
+
+
+\newcommand{\ptl}{\partial}
+\newcommand{\Kvec}{\boldsymbol{k}}
+
+%%%%%%%%%%%%%%% yuan
+
+
+
+
+
+
+
+
+\makeatletter
+\def\@fpheader{\vspace{-.1cm}}
+\makeatother
+
+
+
+
+
+\title{
+Users' Guide for LCT Code
+}
+
+
+
+
+\author[a]{Nikhil Anand,}
+\author[b]{A. Liam Fitzpatrick,}
+\author[b]{Emanuel Katz,}
+\author[b,c]{Zuhair U. Khandker,}
+\author[d,e]{Matthew T. Walters,}
+\author[b]{Yuan Xin}
+
+\affiliation[a]{Department of Physics, McGill University, Montr\'eal, QC H3A 2T8, Canada}
+\affiliation[b]{Department of Physics, Boston University, Boston, MA 02215, USA}
+\affiliation[c]{Department of Physics, University of Illinois, Urbana, IL 61801, USA}
+\affiliation[d]{Theoretical Physics Department, CERN, 1211 Geneva 23, Switzerland}
+\affiliation[e]{Institute of Physics, \'Ecole Polytechnique F\'ed\'erale de Lausanne (EPFL), CH-1015 Lausanne,
+Switzerland}
+
+%\author{The Lightcone Conformal Truncation Collaboration}
+
+
+
+
+%\affiliation[a]{Department of Physics, Boston University, \\
+%Commonwealth Avenue, Boston, MA 02215, USA}
+
+
+%\abstract{We should probably think of a catchy name or abbreviation for our code.
+%}
+
+\arxivnumber{}
+
+
+\begin{document}
+
+\maketitle  
+
+
+\newpage
+\section{Overview}
+
+This guide provides an overview of the lightcone conformal truncation (LCT) Mathematica packages developed to study relevant deformations of two-dimensional free theories. The most recent version of these packages can be found at:
+\begin{center}
+\href{https://github.com/andrewliamfitz/LCT}{\tt https://github.com/andrewliamfitz/LCT}.
+\end{center}
+For a pedagogical introduction to the method of LCT, including many of the underlying conceptual and technical tools behind these packages, see the review available at:\footnote{All references to figures, parts, or sections made within this guide are to those within the review, unless otherwise specified.}
+\begin{center}
+\href{https://arxiv.org/abs/2005.XXXXX}{\tt https://arxiv.org/abs/2005.XXXXX}.
+\end{center}
+In section~\ref{sec:packages} of this guide, we discuss the following packages:
+\begin{itemize}
+\item {\tt Basis-Scalar.wl}: generates the LCT basis for a single free scalar
+\item {\tt Basis-Fermion.wl}: generates the LCT basis for a single free fermion
+\item {\tt Basis-Mixon.wl}: generates the LCT basis of mixed states (or ``mixons'') built from a single scalar and a single fermion
+\item {\tt MatrixElements-Scalar.wl}: generates the Hamiltonian matrix elements for $\phi^n$ interactions with $n=2,3,4$ in the basis constructed by {\tt Basis-Scalar.wl}
+\item {\tt MatrixElements-Mixon-XXX.wl}: a set of 6 packages ({\tt XXX} = {\tt Mass}, {\tt Phi3}, {\tt Phi4}, {\tt Yukawa}, {\tt QPlus}, {\tt QMinus}) which generate the Hamiltonian matrix elements for the fermion mass term $\psi\chi$, $\phi^n$ with $n=2,3,4$, the Yukawa interaction $\phi\psi\chi$, and the supercharges $Q_\pm$ in a $\Ncal=(1,1)$ SUSY theory with a cubic superpotential, all in the basis generated by {\tt Basis-Mixon.wl}
+\end{itemize}
+In section~\ref{sec:demos} of this guide, we present a set of user-friendly Mathematica notebooks designed to demonstrate how to use the LCT packages and how to reproduce the numerical results presented in the LCT review:
+\begin{itemize}
+\item {\tt SimpleScalarCode.nb}: a self-contained introduction to LCT calculations, as applied to $\phi^4$ theory, which does not make use of any of the packages listed above 
+\item {\tt runQCD.nb} and {\tt LargeNDemo.nb}: two self-contained applications of LCT to 2d massless QCD, at both a finite number of colors $N_c$ and the limit of large $N_c$
+\item {\tt Phi4Demo.nb}: demonstrates the use of the packages {\tt Basis-Scalar.wl} and
+\\{\tt MatrixElements-Scalar.wl} in studying $\phi^4$ theory
+\item {\tt Yukawa\_Demo.nb}: demonstrates the use of the packages {\tt Basis-Mixon.wl} and
+\\{\tt MatrixElements-Mixon-XXX.wl} in studying Yukawa theory
+\end{itemize}
+In section~\ref{sec:trouble}, we discuss potential errors or common issues that may be encountered when using these packages, and in section~\ref{sec:technical} we provide some further technical details which apply to multiple packages or the overall method.
+
+Finally, note that we plan to update these packages with additional functionality or potentially add new software to the repository listed above as LCT continues to progress in the future.
+
+
+\section{Packages}
+\label{sec:packages}
+
+To use any of the packages listed below, first make sure that the package is in the correct directory (e.g.\ {\tt NotebookDirectory[]}). Then, import the package with the command \begin{mmaCell}[moredefined={<< "./PackageName.wl"}]{Input}
+  << "./PackageName.wl"
+\end{mmaCell}
+
+\subsection{{\tt Basis-Scalar.wl}}
+
+The package  {\tt Basis-Scalar.wl} contains the routines needed to compute the scalar basis. The main function the user can call is {\tt computeBosonBasis[}$\Delta_{\textrm{max} } $, {\tt prec]} which computes the scalar basis up to the maximum scaling dimension $\Dmax$, using numerical precision {\tt prec} when orthogonalizing states.
+The basis is saved to the public variable {\tt basisBoson}, where the basis states are orthonormalized numerically, as well as the public variable {\tt basisBosonPre}, where the basis states are not orthonormalized.  The advantage of {\tt basisBosonPre} is that prior to orthonormalization, the primaries can be written as sums over monomials with rational coefficients and therefore it has infinite precision, allowing one to choose the numerical precision  of the orthonormalization at a later time.
+
+The organization of {\tt basisBoson} is:
+\begin{itemize}
+%\item {\tt monomialsBoson[n,deg]} returns the list of scalar monomials at particle number {\tt n} and degree {\tt deg}.
+\item {\tt basisBoson[[1,deg+1,n]]} returns the basis states for particle number {\tt n} and degree {\tt deg} as a matrix whose rows correspond to different basis states, whose columns are monomials ordered according to {\tt monomialsBoson[n,deg]}, and whose entries tell us the expansion of the basis states in terms of monomials. 
+\end{itemize}
+For example, for {\tt n=3} and {\tt deg=2}, we have:
+\begin{mmaCell}[moredefined={monomialsBoson,basisBoson}]{Input}
+  n=3; deg=2; 
+  monomialsBoson[n,deg]
+  basisBoson[[1,deg+1,n]]
+\end{mmaCell}
+\begin{mmaCell}{Output}
+  \{\{3,1,1\}, \{2,2,1\}\}
+  \{\{0.755929,-0.654654\}\}
+\end{mmaCell}
+which tells us that there is a single primary operator at this level given by 
+\be
+\ket{\CO} = 0.755929 \rket{ \p^3 \phi (\p\phi)^2 } -0.654654 \rket{ (\p^2 \phi)^2 \p\phi}  . 
+\label{eq:ExampleScalarPrimary}
+\ee
+
+The normalization convention for monomials used in {\tt Basis-Scalar.wl} is
+\be
+\rket{ \p^{\kvec} \phi } \equiv \frac{1}{\CN_{\kvec} \norm{\kvec} } \p^{\kvec}\phi(0) \ket{\rm vac}  \quad  \Rightarrow \quad \left( \rket{\p^{\bk'} \phi} \right)^\dagger \cdot \rket{\p^{\bk} \phi} = \delta_{\bk, \bk'}, 
+\label{eq:CodeMonNormalization}
+\ee
+where we are using the notation introduced in section 7.2 of the LCT review and $\dagger$ is Hermitian conjugation in the standard radial quantization sense. %With this choice, $\ket{ \p^{\kvec} \phi}_c$ has unit radial-quantization norm, which is convenient for numerically implementing the Radial Quantization Method. 
+If needed, we can easily convert (\ref{eq:ExampleScalarPrimary}) back to a position space operator using (\ref{eq:CodeMonNormalization}). Letting $\bk_1=(3,1,1)$ and $\bk_2 = (2,2,1)$, we have
+\be
+\CO(x) = \frac{0.755929}{\CN_{\kvec_1} \norm{\kvec_1}} \p^{\bk_1}\phi(x) - \frac{0.654654}{\CN_{\kvec_2} \norm{\kvec_2}} \p^{\bk_2}\phi(x) \propto  6 \p^{\bk_1}\phi(x) - 9 \p^{\bk_2}\phi(x).
+\label{eq:ExamplePositionSpace}
+\ee
+This is the operator $\CO_{(2,0)}$ (or equivalently $\CO_{(0,2)}$) appearing in Table 2 of the review. 
+
+{\bf Note}: Much as the primary states $\CO(0)| {\rm vac}\>$ in radial quantization are different from the primary states $|\CO, p\>$ in momentum space, the monomial states $\rket{ \p^{\kvec} \phi }$ in radial quantization are different from the monomial states $|\p^{\kvec} \phi, p\>$ in momentum space, with different inner product matrices (for instance $\left( | \p^{\kvec '} \phi, p' \> \right)^\dagger \cdot | \p^{\kvec} \phi, p \>$ does not vanish for $\kvec \ne \kvec'$, in contrast with (\ref{eq:CodeMonNormalization})) and different meanings for Hermitian conjugation.  Consequently, the relative coefficients of different monomials in the decomposition of a primary operator $\CO$ depend on which representation of the operator is used:
+\be
+\CO(x) &=& \sum_{\bk} C_{\bk}^{\CO} \p^{\bk} \phi(x) , \nn\\
+| \CO, p \> &=&  \sum_{\bk} \frac{C_{\bk}^{\CO} N_k}{N_{\CO}} | \p^{\bk} \phi, p\> \equiv \sum_{\bk} \wh{C}_k^{\CO} | \p^{\bk} \phi, p \> , \nn\\
+\CO(0) | \textrm{vac} \> &=& \sum_{\bk} C_{\bk}^{\CO} \CN_{\bk} \norm{\bk}  \rket{\p^{\bk} \phi} \equiv \sum_{\bk} C_{\bk, \rm RQ}^{\CO}  \rket{\p^{\bk} \phi}.
+\label{eq:AllReps}
+\ee
+ The reader should keep this in mind if comparing the above decomposition of $\CO_{(2,0)}$ to that in section 4.2 (for instance, in Table 5) of the review, where momentum-space monomials are used.  
+%Do not compare this with Table 5 of the paper because the normalization is different.
+% This corresponds to the operator at $n=3$, $\Delta=5$ in Table 5 of the paper. Recall that our convention in the code is to normalize operators according to the Zamolodchikov metric. 
+
+\subsection{{\tt Basis-Fermion.wl}}
+
+The package  {\tt Basis-Fermion.wl} contains the routines needed to compute the fermion basis. The main function the user can call is {\tt computeFermionBasis[}$\Delta_{\textrm{max} } $, {\tt prec]} or {\tt computeFermionBasis[}$\Delta_{\textrm{max} } $, {\tt prec, SUSY->True]}, which computes the fermion basis up to $\Dmax$, using numerical precision {\tt prec} when orthogonalizing states. The meaning of $\Dmax$ depends on the option {\tt SUSY} (default {\tt SUSY->False}):
+\begin{itemize}
+\item For option {\tt SUSY->False}, $\Dmax =$ {\tt deg+3/2n} is  the maximum scaling dimension, where {\tt n} is the particle number and {\tt deg} is the degree  
+\item For option {\tt SUSY->True}, we define $\Dmax=$ {\tt deg+n}, so that the truncation is compatible with supersymmery.
+\end{itemize}
+The basis is saved to the public variable {\tt basisFermion}.  The organization of {\tt basisFermion} is analogous to that of its scalar counterpart {\tt basisBoson}. In particular,
+\begin{itemize}
+%\item {\tt monomialsFermion[n,deg]} returns the list of fermion monomials at particle number {\tt n} and degree {\tt deg}.
+\item {\tt basisFermion[[1,deg+1,n]]} returns the basis states for particle number {\tt n} and degree {\tt deg} as a matrix whose rows correspond to different basis states, whose columns are monomials ordered according to {\tt monomialsFermion[n,deg]}, and whose entries tell us the expansion of the basis states in terms of monomials. 
+\end{itemize}
+For example, for {\tt n=2} and {\tt deg=3}, we have 
+\begin{mmaCell}[moredefined={monomialsFermion,basisFermion}]{Input}
+  n=2; deg=3; 
+  monomialsFermion[n,deg]
+  basisFermion[[1,deg+1,n]]
+\end{mmaCell}
+\begin{mmaCell}{Output}
+  \{\{4,1\},\{3,2\}\}
+  \{\{-0.408248,0.912871\}\}
+\end{mmaCell}
+which tells us that there is a single primary operator at this level given by 
+\begin{equation*}
+\ket{\CO} = -0.408248 \rket{ \p^4 \psi \p^2\psi } + 0.912871 \rket{ \p^3 \psi \p^2 \psi  }. 
+\end{equation*}
+Just like in {\tt Basis-Scalar.wl}, monomials in {\tt Basis-Fermion.wl} are normalized according to (\ref{eq:CodeMonNormalization}). Taking this into account, we can convert the operator above to position space if desired, as was done for the scalar example in (\ref{eq:ExamplePositionSpace}). One finds that the operator above corresponds to the operator called $\CO_{(3)}$ in Table 11 of the review. 
+
+The routines in {\tt Basis-Fermion.wl} make frequent use of a correspondence between fermion and scalar monomials. As discussed in section 5.2 of the review, there is a one-to-one mapping between fermion monomials of degree {\tt deg} and scalar monomials of degree {\tt  bDeg}, where 
+\begin{equation*}
+{\tt bDeg = deg - n(n-1)/2 }
+\end{equation*}
+%A common strategy for working with fermion monomials in {\tt Basis-Fermion.wl} is to map them to scalar monomials and work with the latter instead. 
+
+\subsection{{\tt Basis-Mixon.wl}}
+The package  {\tt Basis-Mixon.wl} contains the routines needed to compute the mixon basis. The main function the user can call is \\
+{\tt computeMixonBasis[}$\Delta_{\textrm{max} } $,{\tt basisBoson,basisFermion]} \\
+or {\tt computeMixonBasis[}$\Delta_{\textrm{max} } $,{\tt basisBoson,basisFermion,SUSY->True]},\\ 
+which computes the mixon basis up to $\Dmax$. The meaning of $\Dmax$ depends on the option {\tt SUSY} (default {\tt SUSY->False}), and is the same as described above for  {\tt Basis-Fermion.wl}.
+%\begin{itemize}
+%\item For option {\tt SUSY->False}, $\Dmax$ is  the maximum scaling dimension. 
+%\item For option {\tt SUSY->True}, we define $\Dmax=$ {\tt deg+n}, so that the truncation is compatible with supersymmery.
+%\end{itemize}
+
+The structure of the mixon basis is such that
+    {\tt basisMixon[[nB+1,nF+1]]}
+contains the set of levels in that particle number sector.
+Each level corresponds to a certain combination of {\tt \{degB,degF,l\}},
+where
+\begin{itemize}
+\item {\tt degB} is the degree of the scalar primary state $\CO_B$ that the mixon primary is built upon.
+\item {\tt degF} is that of the fermion primary state $\CO_F$
+\item {\tt l} is the number of alternating derivative taken in the construction $\CO_B \lrpar^\ell \CO_F$ .
+\end{itemize}
+
+For example, in the sector {\tt (nB=1, nF=0)} there is only one primary level, containing only one 
+primary state.
+\begin{mmaCell}[moredefined={basisMixon}]{Input}
+  nB=1; nF=0; 
+  basisMixon[[nB+1,nF+1]]
+\end{mmaCell}
+\begin{mmaCell}{Output}
+  \{<|"nB"->1, "degB"->0, "nF"->0, "degF"->0, "l"->0, 
+  "states"->\{\{\{\{1.\}\}\}\}|>\}
+\end{mmaCell}
+% Of course this means at many particle number sectors there is no state. 
+% \begin{mmaCell}{Input}
+%   basisMixon[[1, 1]]
+%   basisMixon[[13, 3]]
+% \end{mmaCell}
+% \begin{mmaCell}{Output}
+%   \{\}
+%   \{\}
+% \end{mmaCell}
+For a non-trivial set
+\begin{mmaCell}[moredefined={basisMixon}]{Input}
+  nB=2; nF=3; 
+  \{#nB,#degB,#nF,#degF,#l\}&/@basisMixon[[nB+1,nF+1]]//Column
+\end{mmaCell}
+\begin{mmaCell}{Output}
+  \{2,0,3,3,0\}
+  \{2,0,3,3,1\}
+  \{2,0,3,3,2\}
+  \{2,0,3,5,0\}
+  \{2,2,3,3,0\}
+\end{mmaCell}
+
+For each level specified by {\tt \{nB, degB, nF, degF, l\}}, there can be a number of states, each specified by {\tt (l+1)} blocks of coeffcients where each block is a matrix of coefficients multiplying the matrix of mixon monomials given by
+{\tt monomialsBoson[nB, degB + m]} $\otimes$ {\tt monomialsFermion[nF, degF + l - m]} where {\tt m = 0,1,...,l}.
+For example:
+\begin{mmaCell}[moredefined={basisMixon}]{Input}
+  nB=2; nF=2; 
+  example=basisMixon[[nB+1,nF+1,5]]
+\end{mmaCell}
+\begin{mmaCell}{Output}
+  <|"nB"->2, "degB"->0, "nF"->2, "degF"->1, "l"->4, 
+ "states"->\{\{\{\{-0.0778817,-0.0684043,-0.0263288\}\}, \{\{0.289617, 
+      0.20479\}\}, \{\{-0.434425,-0.194281\}, \{-0.354707,-0.15863\}\}, 
+\{\{0.388562\}, \{0.475889\}\}, \{\{-0.175534\}, \{-0.222035\}, \{-0.166527\}\}\}\}|>
+\end{mmaCell}
+there is only one state in the level, the state is specified by coefficients
+\begin{mmaCell}[moredefined={example}]{Input}
+  example["states"][[1]] // Column
+\end{mmaCell}
+\begin{mmaCell}{Output}
+  \{\{-0.0778817,-0.0684043,-0.0263288\}\}
+  \{\{0.289617,0.20479\}\}
+  \{\{-0.434425,-0.194281\},\{-0.354707,-0.15863\}\}
+  \{\{0.388562\},\{0.475889\}\}
+  \{\{-0.175534\},\{-0.222035\},\{-0.166527\}\}
+\end{mmaCell}
+multiplying the monomials
+\begin{mmaCell}[moredefined={monomialsBoson,monomialsFermion}]{Input}
+  With[\{nB=2,nF=2,degB=0,degF=1,l=4\},
+    Table[Outer[
+      List[Flatten[\{#1,#2\}]]\&,
+      monomialsBoson[nB,degB+m],
+      monomialsFermion[nF,degF+l-m],1],
+    \{m,0,l\}] 
+  ] // Column
+\end{mmaCell}
+\begin{mmaCell}{Output}
+  \{\{\{\{1,1,6,1\}\},\{\{1,1,5,2\}\},\{\{1,1,4,3\}\}\}\}
+  \{\{\{\{2,1,5,1\}\},\{\{2,1,4,2\}\}\}\}
+  \{\{\{\{3,1,4,1\}\},\{\{3,1,3,2\}\}\},\{\{\{2,2,4,1\}\},\{\{2,2,3,2\}\}\}\}
+  \{\{\{\{4,1,3,1\}\}\},\{\{\{3,2,3,1\}\}\}\}
+  \{\{\{\{5,1,2,1\}\}\},\{\{\{4,2,2,1\}\}\},\{\{\{3,3,2,1\}\}\}\}
+\end{mmaCell}
+which represents the state
+\begin{equation}
+\begin{aligned}
+\ket{\CO}&=\\
+&-0.0778817\ket{\d\phi\d\phi\d^6\psi\d\psi}
+-0.0684043\ket{\d\phi\d\phi\d^5\psi\d^2\psi}
+-0.0263288\ket{\d\phi\d\phi\d^4\psi\d^3\psi} \\
+&+0.289617\ket{\d^2\phi\d\phi\d^5\psi\d\psi}
++0.20479\ket{\d^2\phi\d\phi\d^4\psi\d^2\psi}\\
+&-0.434425\ket{\d^3\phi\d\phi\d^4\psi\d\psi}
+-0.194281\ket{\d^3\phi\d\phi\d^3\psi\d^2\psi}\\
+&-0.354707\ket{\d^2\phi\d^2\phi\d^4\psi\d\psi}
+-0.15863\ket{\d^2\phi\d^2\phi\d^3\psi\d^2\psi}\\
+&+0.388562\ket{\d^4\phi\d\phi\d^3\psi\d\psi}
++0.475889\ket{\d^3\phi\d^2\phi\d^3\psi\d\psi}\\
+&-0.175534\ket{\d^5\phi\d\phi\d^2\psi\d\psi}
+-0.222035\ket{\d^4\phi\d^2\phi\d^2\psi\d\psi}
+-0.166527\ket{\d^3\phi\d^3\phi\d^2\psi\d\psi} \, .
+\end{aligned}\nn
+\end{equation}
+(We have left off the ${\rm RQ}$ subscripts for conciseness in the above states).
+
+\subsection{{\tt MatrixElements-Scalar.wl}} The package {\tt MatrixElements-Scalar.wl} contains routines relevant for computing the $\phi^2$ and $\phi^4$ matrix elements.
+
+This package contains three main functions that the user can call: \begin{itemize}
+	\item {\tt ComputeScalarMassMatrix[}$\Delta${\tt max}, {\tt basisBoson]}, which computes the mass term matrix elements from the $\phi^2$ term. The output is stored in the variable {\tt fullMassMatrix}.
+	\item {\tt ComputePhi4NtoNMatrix[}$\Delta${\tt max}, {\tt basisBoson]}, which computes the $n$-to-$n$ matrix elements from the $\phi^4$ interaction term.  The output is stored in the variable {\tt fullPhi4NtoNMatrix}.
+	\item {\tt ComputePhi4NtoNPlus2Matrix[}$\Delta${\tt max}, {\tt basisBoson]}, which computes the $n$-to-$(n+2)$ matrix elements from the $\phi^4$ interaction term. The output is stored in the variable {\tt fullPhi4NtoNPlus2Matrix}.
+\end{itemize} The arguments for all of these functions work in the same way: the first argument {\tt$\Delta$max} instructs the desired function to compute the matrix elements up to and including the scaling dimension $\Delta_{\textrm{max}}$. The second argument {\tt basisBoson} is the output of the package {\tt Basis-Scalar.wl} (that is, the scalar basis tabulated up to and including $\Delta_{\textrm{max}}$). Note that this means that the first argument {\tt$\Delta$max} \textit{cannot exceed} the truncation $\Delta_{\textrm{max}}$ that was chosen for {\tt basisBoson}!
+
+For example, suppose the user has run {\tt Basis-Scalar.wl} successfully and has obtained the scalar basis up to $\Delta_{\textrm{max}} = 20$ and it is stored in the variable {\tt basisBoson}. Then, to obtain, e.g. the $n$-to-$n$ matrix elements, we can input \begin{mmaCell}[moredefined={ComputePhi4NtoNMatrix,basisBoson}]{Input}
+  ComputePhi4NtoNMatrix[20,basisBoson]
+\end{mmaCell}
+The output is a $20 \times 20$ array, wrapped as a {\tt SparseArray} and stored in the variable {\tt fullPhi4NtoNMatrix}. The entry {\tt fullPhi4NtoNMatrix[[n,n]]} is a matrix containing all matrix elements for the $n$-particle sector. For example, {\tt fullPhi4NtoNMatrix[[2,2]]} is a $10 \times 10$ matrix containing the $2 \ra 2$ $\phi^4$ matrix elements (there are $10$ two-particle states at $\Dmax=20$). Similarly, {\tt fullPhi4NtoN2Matrix[[2,4]]} is a $10 \times 64$ matrix containing the $2 \ra 4$ $\phi^4$ matrix elements.  The conventions are that all numerical factors except the bare mass $m^2$ (for {\tt ComputeScalarMassMatrix}) and the coupling constant $\lambda$ (for {\tt ComputePhi4NtoNMatrix} and {\tt ComputePhi4NtoNPlus2Matrix}) are absorbed into the output matrices. 
+
+%So, for example, to compute the Hamiltonian in $\phi^4$ theory, we can define {\tt fullHamiltonian[$\lambda$\_]:= fullMassMatrix + $\lambda$ (fullPhi4NtoNMatrix + 
+%fullPhi4NtoNPlus2Matrix);}.
+
+There are several auxiliary functions within {\tt MatrixElements-Scalar.wl} that are used internally within the package. The user may wish to call them, and we list their functionality here for completeness. \begin{itemize}
+	\item {\tt massNtoN[nR,$\Delta$max]}, which computes the monomial mass matrix. The output is the mass term matrix evaluated for monomials.
+  \item {\tt phi4NtoN[nR,$\Delta$max]}, which computes the monomial $n$-to-$n$ interaction matrices. The output is the $n$-to-$n$ matrix evaluated for monomials. 
+  \item {\tt phi4NtoNPlus2[nR,$\Delta$max]}, which computes the monomial $n$-to-$(n+2)$ interaction matrices. Note that the output here is not a square matrix, as there are typically more $(n+2)$-particle monomials than $n$-particle monomials.
+  \item {\tt phiAnnihilateMap[nR,$\Delta$max]}, which determines the matrix representation of radial quantization annihilation modes (see section 7.6 of the review). This functions output a sparse array that is the representation of $a_k$ on a set of monomials labelled by occupation number. The related functions {\tt phiAnnihilateTwoMap}, and {\tt phiAnnihilateThreeMap} do the same but with $a_k^2$ and $a_k^3$.
+\end{itemize} The arguments for all of these functions are the same: they compute the desired function a given particle number {\tt nR} and up to $\Delta_{\textrm{max}}$ {\tt $\Delta$max}. The organization of the monomials for the monomial matrix elements matches that of the basis states.
+
+\subsection{{\tt MatrixElements-Mixon-XXX.wl}}
+
+There are six packages for mixon matrix elements that all work in essentially the same way, but produce matrix elements for different operators.  These are the packages {\tt MatrixElements-Mixon-XXX.wl} with {\tt XXX} = {\tt Mass}, {\tt Phi3}, {\tt Phi4}, {\tt Yukawa}, {\tt QPlus}, and {\tt QMinus} (the ``{\tt Mixon}'' has been dropped from the package title for the last three of these since there is no scalar-only or fermion-only version of them).
+
+We will describe {\tt MatrixElements-Mixon-Mass.wl} first, and then briefly summarize how the others differ.
+
+
+\subsubsection*{{\tt MatrixElements-Mixon-Mass.wl}}
+
+The package {\tt MatrixElements-Mixon-Mass.wl} contains routines relevant for computing matrix elements for both the scalar and fermion mass term, where the external states are so-called ``mixon'' states containing both scalars and fermions. This package contains one main function that the user can call:
+\begin{itemize}
+\item {\tt computeMixonMassMatrices[$\De$maxSuffix,basisMixon,fdr]}, which computes all matrix elements for both the scalar and fermion mass term. The output is two matrices, whose entries correspond to matrix elements between the states in {\tt basisMixon}, which are stored in the variables {\tt matScalarMass} and {\tt matFermionMass}.
+\end{itemize}
+The package creates two files to save the output, located in the directory specified by {\tt fdr}, which are labeled by the first argument {\tt $\De$maxSuffix}. For example, for {\tt $\De$maxSuffix$=20$}, the package would create the two files:
+\begin{itemize}
+\item {\tt MatrixScalarMassMixonD20}, containing the $\phi^2$ matrix elements in the variable {\tt matScalarMass},
+\item {\tt MatrixFermionMassMixonD20}, containing the $\psi\fr{1}{\p}\psi$ matrix elements in the variable {\tt matFermionMass}.
+\end{itemize}
+The argument {\tt $\De$maxSuffix} only specifies the names for the output files, and does not affect any part of the evaluation. The package simply computes all matrix elements for the input basis {\tt basisMixon}. Only matrix elements between states with the same number of scalars and fermions will be nonzero.
+
+\subsubsection*{{\tt MatrixElements-Mixon-Phi3.wl}}
+
+The package {\tt MatrixElements-Mixon-Phi3.wl} computes mixon matrix elements for the $\phi^3$ interaction.  The  main user function is:
+\begin{itemize}
+\item {\tt computePhi3Matrices[$\De$maxSuffix,basisMixon,fdr]}, which computes all matrix elements for  the $\phi^3$ interaction. The output is a matrix, whose entries correspond to matrix elements between the states in {\tt basisMixon}, which are stored in the variable {\tt matPhi3NtoN1}.
+\end{itemize}
+%The package creates one file to save the output, located in the directory specified by {\tt fdr}, which is labeled by the first argument {\tt $\De$max}. 
+For example, for {\tt $\De$maxSuffix$=20$}, the package would create the file:
+\begin{itemize}
+\item {\tt MatrixPhi3NtoN1MixonD20}, containing the $\phi^3$ matrix elements in the variable {\tt matPhi3NtoN1}.
+\end{itemize}
+%The argument {\tt $\De$max} only specifies the names for the output files, and does not affect any part of the evaluation. The package simply computes all matrix elements for the input basis {\tt basisMixon}. 
+Only matrix elements between states with the same number of fermions and whose number of scalars differ by $1$ will be nonzero.
+
+\subsubsection*{{\tt MatrixElements-Mixon-Phi4.wl}}
+
+The package {\tt MatrixElements-Mixon-Phi4.wl} computes mixon matrix elements for the $\phi^4$ interaction. The main user function is
+\begin{itemize}
+\item {\tt computePhi4Matrices[$\De$maxSuffix,basisMixon,fdr]}, which computes all matrix elements for  the $\phi^4$ interaction. The output is two matrices, whose entries correspond to the $n \ra n$ and $n \ra n+2$ matrix elements between the states in {\tt basisMixon}, which are stored in the variables {\tt matPhi4NtoN} and {\tt matPhi4NtoN2}.
+\end{itemize}
+%The package creates two files to save the output, located in the directory specified by {\tt fdr}, which are labeled by the first argument {\tt $\De$max}. 
+For example, for {\tt $\De$maxSuffix$=20$}, the package would create the two files:
+\begin{itemize}
+\item {\tt MatrixPhi4NtoNMixonD20}, containing the $n \ra n$ matrix elements in the variable {\tt matPhi4NtoN},
+\item {\tt MatrixPhi4NtoN2MixonD20}, containing the $n \ra n+2$ matrix elements in the variable {\tt matPhi4NtoN2}.
+\end{itemize}
+%The argument {\tt $\De$max} only specifies the names for the output files, and does not affect any part of the evaluation. The package simply computes all matrix elements for the input basis {\tt basisMixon}. 
+Only matrix elements between states with the same number of fermions and whose number of scalars differ by $0$ or $2$ will be nonzero.
+
+\subsubsection*{{\tt MatrixElements-Yukawa.wl}}
+
+The package {\tt MatrixElements-Yukawa.wl} computes mixon matrix elements for the Yukawa $\phi \psi \chi$ interaction, which in lightcone becomes two interactions, a cubic $\sim \phi \psi \frac{1}{\partial} \psi$ and a quartic $\sim \phi \psi \frac{1}{\partial} \phi \psi$. The main user function is
+\begin{itemize}
+\item {\tt computeYukawaMatrices[$\De$maxSuffix,basisMixon,fdr]}, which computes all matrix elements for both the cubic and quartic interactions. The output is two matrices,  stored in the variables {\tt matYukawaCubic} and {\tt matYukawaQuartic}, for the cubic and quartic matrix elements, respectively.
+\end{itemize}
+%For example, for {\tt $\De$maxSuffix$=20$}, the package would create the two files:
+%\begin{itemize}
+%\item {\tt MatrixPhi4NtoNMixonD20}, containing the $n \ra n$ matrix elements in the variable {\tt matPhi4NtoN},
+%\item {\tt MatrixPhi4NtoN2MixonD20}, containing the $n \ra n+2$ matrix elements in the variable {\tt matPhi4NtoN2}.
+%\end{itemize}
+
+\subsubsection*{{\tt MatrixElements-QPlus.wl}}
+
+The package {\tt MatrixElements-QPlus.wl} computes mixon matrix elements for the supercharge $Q_+$ for a mass term $Q_+ \sim \phi \psi$ and a cubic term $Q_+ \sim \phi^2 \psi$.   The main user function is
+\begin{itemize}
+\item {\tt computeQPlusMatrix[$\De$maxSuffix,basisMixon,fdr]}, which computes all matrix elements for both the mass and cubic terms. The output is two matrices,  stored in the variables {\tt matQPlusMass} and {\tt matQPlusInt}.
+\end{itemize}
+
+\subsubsection*{{\tt MatrixElements-QMinus.wl}}
+
+The package {\tt MatrixElements-QMinus.wl} computes mixon matrix elements for the supercharge $Q_- \sim \p \phi \psi$.   The main user function is
+\begin{itemize}
+\item {\tt computeQMinusMatrix[$\De$maxSuffix,basisMixon,fdr]}, which computes all matrix elements for $Q_-$. The output is a matrix,  stored in the variables {\tt matQMinus}.
+\end{itemize}
+
+
+
+\section{Demos}
+\label{sec:demos}
+
+\subsection{Simple Scalar Code}
+
+The file {\tt SimpleScalarCode.nb} provides a demonstration of the application of LCT to $\phi^4$ theory,
+\be
+\Lcal = \half \p_\mu\phi\p^\mu\phi - \half m^2 \phi^2 - \fr{1}{4!} \lambda \phi^4.
+\ee
+This notebook is self-contained (i.e.~needs no external packages) and uses the example code presented in section 4 of the LCT review. The goal of this notebook is to provide a simple, readable example of the main steps in LCT. This code is much less efficient than the main packages, and can only be used to study low values of $\Dmax$ ($\lesssim 10$).
+
+There are three sections in the notebook:
+\begin{itemize}
+\item \textbf{Construct Basis}\newline
+The first section constructs a complete, orthonormal basis of primary states in free scalar field theory, following the methods in sections 4.1 and 4.2. There are two main functions in this section: {\tt PrimarySetSimp[n,deg]}, which constructs all primary operators with particle number $n$ and scaling dimension $\De=${\tt deg+n}, and {\tt orthoPrimaries[n,deg]} which orthonormalizes the primary operators at level ({\tt n,deg}) with respect to the momentum space inner product. Using these functions, we reproduce the $\Dmax=5$ basis in Table 5.
+\item \textbf{Matrix Elements} \newline
+The second section constructs the Hamiltonian matrix elements in the basis of primary operators for the $\phi^2$ and $\phi^4$ deformations, following the methods of section 4.3 and 4.4. There are three main functions, which all have very similar structure: {\tt PrimaryMassMatrix[n,deg1,deg2]} which computes the $\phi^2$ matrix elements between all states at level ({\tt n,deg1}) and those at level ({\tt n,deg2}), {\tt PrimaryNtoNMatrix[n,deg1,deg2]} which computes the $\phi^4$ matrix elements between all states at levels ({\tt n,deg1}) and ({\tt n,deg2}), and \\{\tt PrimaryNtoN2Matrix[n,deg1,deg2]} which computes the $\phi^4$ matrix elements between all states at level ({\tt n,deg1}) and those at level ({\tt n+2,deg2}). Using these functions, we reproduce the $\Dmax=5$ matrix elements in Tables 7 and 9, and compute the mass gap as a function of the dimensionless $\phi^4$ coupling $\fr{\lambda}{4\pi m^2}$.
+\item \textbf{Spectral Densities} \newline
+The final section constructs the overlaps between the operators $\phi^n$ and the basis of primary operators, following the method of section 4.6. There is one main function: {\tt primaryPhiN[n,deg]} which computes the overlap of $\phi^n$ with all basis states at level ({\tt n,deg}). Using this function, we compute the integrated spectral density for $\phi^2$ in the free massive theory ($\lambda=0$) with $\Dmax=20$.
+\end{itemize}
+
+\subsection{2D QCD}
+\label{sec:2dQCD}
+ In the folder {\tt ./documentation/QCD Demo/}, we have included files to work through the 2d massless QCD example presented in section 6 of the review. In particular, the notebook {\tt runQCD.nb} includes functions to study the theory described by the Lagrangian \begin{equation}
+  \Lcal= i \Psibar \slashed{D} \Psi - \frac{1}{2}\Tr F_{\mu\nu}F^{\mu\nu},
+\end{equation} and produce all figures shown in section 6. We briefly describe the general structure and functions of this notebook below (more comments may be found within the notebooks).
+
+Roughly, {\tt runQCD.nb} is divided into two parts. The first part (\textbf{Section 1.\ The symbolic package}) includes symbolic functions that can be used to compute basis states and matrix elements as symbolic functions of the number of colors $N_c$. We also include a demonstration of how to use the functions from the first part. Since everything is done analytically in the first part, there is a trade-off in computation speed. The second part (\textbf{Section 2.\ The numerical package}) of the package includes faster numerical based functions. This requires setting $N_c$ to a desired value before running the functions. Note that none of the functions in {\tt runQCD.nb} use the radial quantization improvements developed in Part II of the review, which we leave to future work.
+
+In the first part of {\tt runQCD.nb}, we include the following sections:
+\begin{itemize}
+  \item \textbf{Generate the basis states recursively:} Here we include functions which symbolically compute 2d QCD primaries. The key function {\tt stateSet[dim]} computes primary states at dimension {\tt dim} by taking the double-trace combination of lower dimension primaries, starting with the seed primary $\psi^\dagg \psi$.
+  \item \textbf{Inner products, color indices and contractions of spectators:} This section includes functions for computing finite $N_c$ inner products, which are needed to orthogonalize primaries obtained in the previous section. 
+  \item \textbf{Gauge interaction: structure:} This section includes functions for computing the index structure of monomial gauge interaction matrix elements. It is roughly subdivided into three parts: the first part, which determines the gauge interaction structure for the `active' part of the matrix element. The second, which determines the the contribution from the `spectators'. And lastly, we put together these two steps to obtain the structure of final matrix element. More details about the gauge interaction may be found in Appendix D of the review.
+  \item \textbf{Gauge interaction: active part:} Defines formulas for the active part of the gauge interaction for generic monomials.
+  \item \textbf{Primary matrix elements:} Computes primaries, orthgoonalizes them, and puts together gauge interaction monomial matrix elements into gauge interaction matrix elements for primaries.
+\end{itemize} In the following section (\textbf{Use the code}), we include a demonstration of how to use the functions described above, and the output they generate.
+
+In the second part, we import the package {\tt QCD-public.wl}, which essentially includes numerical implementations of the functions in the first part. It includes the following sections:
+\begin{itemize}
+  \item \textbf{Compute the spectral density:} which computes the stress tensor spectral density shown in Fig.~9 of the review for $N_c = 3$.
+  \item \textbf{Use the spectral density to extract the low energy single particle spectrum:} where we identify single particle states in the stress tensor spectral density for $N_c=3$ and $N_c = 6$. We produce Fig.~10 of the review.
+\end{itemize}
+
+Finally, in the standalone notebook {\tt LargeNDemo.nb}, we include expressions to compute analytic matrix elements at large $N_c$, in both the cosine and LCT basis. Using these matrix elements, we reproduce Figure 8 in the LCT review.
+
+\subsection{Application I: $\phi^4$ Theory}
+
+The folder {\tt Phi4Demo/} contains all files necessary to work through the first application presented in Part III, $\phi^4$ theory. In particular, the notebook {\tt Phi4Demo.nb} demonstrates how to use the packages {\tt Basis-Scalar.wl} and {\tt MatrixElements-Scalar.wl} to reproduce all figures in section 9.
+
+The notebook {\tt Phi4Demo.nb} is divided into two main parts:
+\begin{itemize}
+\item \textbf{Generate Basis and Matrix Elements} \newline
+The first part uses {\tt Basis-Scalar.wl} to construct the complete basis of states in free scalar theory up to the scaling dimension {\tt DMAX} (set by the user at the top of the notebook), then uses {\tt MatrixElements-Scalar.wl} to compute all $\phi^2$ and $\phi^4$ matrix elements for this basis. The output basis and matrix elements are saved in files labeled by {\tt DMAX}. For example, with {\tt DMAX}$=20$ (the default value) we obtain the files:
+\begin{itemize}
+\item {\tt BasisBosonD20.WXF}, containing the basis states,
+\item {\tt ScalarMassD20.WXF}, containing the $\phi^2$ matrix elements,
+\item {\tt ScalarPhi4NtoND20.WXF}, containing the $n\ra n$ $\phi^4$ matrix elements,
+\item {\tt ScalarPhi4NtoN2D20.WXF}, containing the $n\ra n+2$ $\phi^4$ matrix elements.
+\end{itemize}
+The default value {\tt DMAX}$=20$ allows the user to keep the runtime and file sizes relatively small. To completely reproduce the figures in section 9, the user should set {\tt DMAX}$=40$.\footnote{Note that with {\tt DMAX}$=40$ the diagonalization of the resulting Hamiltonian for a given coupling $\lambda$ can take up to an hour.}
+\item \textbf{Diagonalize Hamiltonian and Reproduce Figures} \newline
+The second part uses the output data from the first part to reproduce Figures 13-18. For each figure, the user can study results for any value of $\Dmax \leq${\tt DMAX}. Within this part, there are three main sections:
+\begin{itemize}
+\item \textbf{Mass Gap vs Coupling (Figure 13)} \newline
+First, we diagonalize the full Hamiltonian for a range of values for the coupling $\lambda$. Because the theory has a $\mathbb{Z}_2$ symmetry $\phi \ra -\phi$, the Hamiltonian can be split into odd and even particle number sectors, which can be diagonalized independently. We use the results to reproduce Figure 13, showing the one-, two-, and three-particle thresholds as a function of $\lambda$.
+\item \textbf{Convergence with $\Dmax$ (Figure 14)} \newline
+Next, we diagonalize the Hamiltonian at a fixed value of $\lambda$ (set by the user) for various values of $\Dmax$. We extrapolate these results to $\Dmax \ra \infty$ by fitting the error as $1/\Dmax^p$, where the user can vary $p$. We use these results to reproduce Figure 14, showing the convergence of the one-, two-, and three-particle thresholds with increasing $\Dmax$.
+\item \textbf{Spectral Densities (Figures 15-18)} \newline
+Finally, we diagonalize the Hamiltonian at a fixed value of $\lambda$ and compute the resulting spectral densities. Specifically, we compute the Zamolodchikov $C$-function and the integrated spectral density for $\phi^2$ (Figure 15), demonstrate universality in $\phi^{2n}$ for couplings near the critical point (Figure 16), compute the integrated spectral density of the trace $T_{+-}$ (Figure 17), and compare the $C$-function near criticality with the 2d Ising model (Figure 18). In comparing spectral density results for different values of $\Dmax$, it is best to keep the mass gap (which we label as $4m_\gap^2$, since we are focused on the even-particle-number sector) fixed, rather than the coupling $\lambda$. In order to do this, we also provide a section at the end which allows the user to specify $\Dmax$ and a desired value for the even-particle-number mass gap (in units of the bare mass). The code then scans over $\lambda$ to construct an interpolating function $\lambda(4m_{\gap}^2)$ and determines the value of the coupling needed to obtain the desired mass gap.
+\end{itemize}
+\end{itemize}
+
+\subsection{Application II: Yukawa Theory}
+There are two mathematica notebooks that demonstrate different parts of the non-SUSY Yukawa example described by the Lagrangian
+\begin{equation}
+\Lcal = \frac{1}{2} (\p \phi)^2 - \frac{1}{2}m_\phi^2 \phi^2 + i\psi\p_+\psi - \frac{1}{2} \psi\frac{m_\psi^2 }{i\p} \psi - m_\psi g \phi \psi\frac{1}{i\p} \psi - \frac{g^2}{2} \phi  \psi\frac{1}{i\p} \phi \psi  .
+\label{eq:YukawaLCLag2}
+\end{equation}
+
+\paragraph{{\tt YukawaOneLoopMassShifts.nb}}
+The file is in the path \\{\tt ./documentation/YukawaOneLoopMassShifts.nb}. The file walks through the calculation of second order time-independent perturbation theory to compute the one-loop mass shift of the one-fermion state, and reproduces Fig.~19 of the review. The notebook does not use any packages.
+
+\paragraph{{\tt Yukawa\_Demo.nb}}
+The file is in the path \\{\tt ./documentation/Yukawa Demo/Yukawa\_Demo}. This is the main file that walks through the computation of LCT results of the Yukawa theory using the code packages. 
+
+The file contains the following parts:
+\begin{itemize}
+\item \textbf{How to run the Yukawa package} \newline
+This section introduces the basics of running the Yukawa packages. The reader can directly run the whole section and see instant results.
+  \begin{itemize}
+  \item \textbf{Run packages}\\
+  This subsection introduces the basic commands to run the packages to compute the basis states and matrix elements at certain $\Dmax$. The default set is $\Dmax=6$ (set at the beginning) so running the whole section is instant. If the reader wishes to generate the data to reproduce the results in the review, one can change this line to $\Dmax=20$ and it takes about 3 hours to finish.
+  \item \textbf{Parse the computed data into readable forms}\\
+  The raw output data of {\tt computeXXXX[...]} is hard to use. This subsection introduces the useful commands to flatten the states list and interaction matrix into readable forms which are used throughout the rest of the notebook.
+  \item \textbf{Save data in more compact format}\\
+  This subsection introduces the convention of importing/exporting data computed in previous subsections. Running this subsection will create (by default) $\Dmax=6$ data in exactly the same form as will be imported in the next section. Setting $\Dmax=20$ will override the pre-generated data.
+  \end{itemize}
+\item \textbf{Load previously computed data and parse}\\
+This section loads the pre-generated (or user-generated if one sets $\Dmax=20$) data at $\Dmax=20$. Readers need to run this section before proceeding to later sections.
+\item \textbf{Fermion Mass shift (Figures 20-21)}\\
+This section computes the fermion mass shift for fermion multi-particle states, using the second order time-independent perturbation theory and the explicit Hamiltonian at $\Dmax$.
+  \begin{itemize}
+  \item \textbf{Old fashioned perturbation theory}\\
+  This subsection defines and computes the intermediate results used in perturbation theory. 
+  \item \textbf{Fig 20}\\
+  This subsection tests two different schemes to cancel the fermion mass one-loop divergence -- using a local counter-term or a non-local one, by computing the one-loop fermion mass shift of 1- 2- and 3- particle states.
+  \item \textbf{Fig 21}\\
+  This subsection computes the one-loop fermion mass shift of 1- 2- and 3- particle states in the above two schemes. In addition to the divergence-canceling counter-terms, a finite local term is introduced to restore Lorentz covariance. 
+  \end{itemize}
+\item \textbf{The energy spectrum (Figure 22)}\\
+This section computes the low energy spectrum of Yukawa theory at $m_\psi/m_\phi = 0.4$ and $0.8$, as a function of the coupling, $g$. This section may take a few minutes to run. In order to speed up, the scanning of $g$ takes larger step length than the actual plot in the main text.
+\item \textbf{Spectral density (Figures 23-24)}\\
+This section computes the spectral density.
+  \begin{itemize}
+  \item \textbf{Fig 23 - C function}\\
+  This subsection computes the integrated spectral density of $T_{--}$, known as the Zamolodchikov C function. The plots shows the data at $\Dmax=20$ and $m_\psi/m_\phi = 0.4$ and $0.8$.
+  \item \textbf{Fig 24 - $\<\phi\phi\>$ correlator}\\
+  This subsection computes the spectral density of $\phi$ operator. The plots shows the data at $\Dmax=20$ and $m_\psi/m_\phi = 0.4$ at different $g$. The spectral density is compared with the Breit-Wigner distribution.
+  \end{itemize}
+\end{itemize}
+
+\section{Troubleshooting}
+\label{sec:trouble}
+
+Here we enumerate potential errors / commonly asked questions that can arise when trying to use LCT code. We hope to update this section periodically as we become aware of any additional bugs or runtime issues. \begin{itemize}
+  \item The function {\tt BinarySerialize} or {\tt BinaryDeserialize} gives a ``Serialized data is corrupt and does not represent an expression'' error.
+  \subitem This is likely due to running the code on an earlier version of Mathematica. LCT packages have been tested on Mathematica version 12.1.0, and older versions may generate error messages with {\tt BinarySerialize} or {\tt BinaryDeserialize} functions, especially when changing precision. We recommend updating Mathematica to 12.0.0 or later.
+  \item Functions do not seem to compile / external libraries necessary for {\tt CompilationTarget} cannot be found.
+  \subitem In order to optimize certain operations,  LCT packages pre-compile frequently called Mathematica functions using the {\tt Compile} function. These functions are translated into C code with the command {\tt CompilationTarget -> "C"}. This assumes that the user's machine has a suitable external C compiler. If one is not found, Mathematica defaults to {\tt CompilationTarget -> "WVM"} which creates code for the traditional Wolfram System virtual machine, at the expense of computational efficiency. We recommend installing a C compiler for fastest results. 
+  \item Mathematica crashes when importing large $\Delta_{\textrm{max}}$ matrix elements.
+  \subitem This may be an issue on older machines. LCT matrix element files can be $\Ocal(\textrm{gigabyte})$ in size each at $\Delta_{\textrm{max}}=40$, so working with these files can place a high load on the local Mathematica kernel. If this issue happens, it may be circumvented by importing files on a machine with more RAM and/or more up-to-date performance specifications.
+\end{itemize}
+
+
+\section{Technical Details}
+\label{sec:technical}
+
+\subsection{Symmetry Factors and  Normalizations}
+
+
+In the Radial Quantization method, the radial quantization creation/annihilation operators of the interaction must contract with the modes of the external states so that what is left behind in the in and out states exactly match. This condition appears as a restriction on the sum in various expressions, reproduced here:
+\begin{equation}
+\Mcal_{\cO \cO^\prime}^{(\frac{m^2}{2} \phi^2)} =m^2 \frac{(-1)^{\Delta-\Delta'}N_{\rm FT}}{2\pi N_{\cO}N_{\cO^\prime}} \sum_{\bk, \bk'} \left[   \, C^\Ocal_{\bk} \, \Ncal_{\bk}\, C^{\Ocal'}_{\bk^\prime} \,  \Ncal_{\bk'}  \sum_{\bk/k_i = \bk'/k'_j} \norm{\bk/k_i}^2  \sqrt{\frac{{\rm min}(k_i,k'_j)}{{\rm max}(k_i,k'_j)}} \right]. 
+\label{eq:II:ScalarPhi2Final}
+\end{equation}
+\be
+\Mcal_{\cO \cO^\prime}^{(\frac{\lambda}{n!}\phi^n)} &=&2 \lambda  \frac{(-1)^{\Delta-\Delta'}N_{\rm FT}  }{(4\pi)^{\frac{n}{2}}N_{\cO}N_{\cO^\prime}}  \sum_{\bk, \bk'} \left[   \, C^\Ocal_{\bk} \, \Ncal_{\bk}\, C^{\Ocal'}_{\bk^\prime} \,  \Ncal_{\bk'}  \sum_{\bk/\{k_i\} = \bk'/\{k_j'\} \atop |\{k_i\}| + |\{k_j'\}| = n} 
+%|\{k_i\}|! | \{ k'_j\}| ! 
+\norm{\bk/\{k_i\}}^2 \frac{\CI(\{k_i\}, \{k_j'\})  }{\prod_i k_i^{\frac{1}{2}} \prod_j k_j'^{\frac{1}{2}}} \right], \nn\\
+\label{eq:II:ScalarPhiNFinal}
+\ee
+\begin{equation}
+\Mcal_{\cO \cO^\prime}^{(\frac{m^2}{2}\psi \frac{1}{\partial} \psi)} = m^2 \frac{(-1)^{\Delta-\Delta'}N_{\rm FT}}{4\pi N_\CO N_{\CO'}} \sum_{\bk, \bk'} \left[  2 \, C^\Ocal_{\bk} \, C^{\Ocal'}_{\bk^\prime} \, \Ncal^{(F)}_{\bk}\, \Ncal^{(F)}_{\bk'}  \sum_{\bk/k_i = \bk'/k'_j}\frac{(-1)^{\sigma_{i,j}} }{2} \sqrt{ \frac{k_{\rm min}(k_{\rm min}+1)}{k_{\rm max}(k_{\rm max}+1)}} \right], 
+\end{equation}
+\be
+\Mcal_{\cO \cO^\prime}^{(g^2 \phi \psi \frac{1}{\partial} \phi \psi)} &=& 2g^2 \frac{(-1)^{\Delta-\Delta'}N_{\rm FT}}{(4\pi)^2 N_\CO N_{\CO'}} \nn\\ &\times&  \sum_{\bk, \bk'} \left[   C^{\cO}_{\bk} \, C^{\cO'}_{\bk^\prime} \, \Ncal^{(M)}_{\bk}\, \Ncal^{(M)}_{\bk'}  \sum_{\bk/\{k_i| s_i=1\} = \atop  \bk'/\{k_i | s_i =-1 \}}(-1)^{\sigma(\{k_i, s_i\}) } \norm{\bk/\{k_i\}}^2g_{\phi\psi\frac{1}{\p}\phi\psi}(k_i, s_i) \right],  \nn\\
+\label{eq:yukawaquarticRQ}
+\ee
+\be
+\Mcal_{\cO \cO^\prime}^{(m g\phi \psi \frac{1}{\partial} \psi)} &=&  2mg \frac{(-1)^{\Delta-\Delta'}N_{\rm FT}}{(4\pi)^{3/2}N_{\CO} N_{\CO'}} \nn\\
+ & \times & \sum_{\bk, \bk'} \left[  C^{\cO}_{\bk} \, C^{\cO'}_{\bk^\prime} \, \Ncal^{(M)}_{\bk}\, \Ncal^{(M)}_{\bk'}  \sum_{\bk/\{k_i| s_i=1\} = \atop  \bk'/\{k_i | s_i =-1 \}}(-1)^{\sigma(\{k_i, s_i\}) }  \norm{\bk/\{k_i\}}^2 g_{\phi\psi\frac{1}{\p}\psi}(k_i, s_i) \right],  \nn\\
+\ee
+\paragraph{Yukawa terms}
+In the last two equations above, for the Yukawa interaction terms, we introduced an additional variable $s_i$ that keeps track of whether each part of the interaction contracts to the left or the right. The first three interactions, $\phi^2, \phi^4$, and $\psi \frac{1}{\p} \psi$, are simple enough that this additional variable was not needed.  
+
+The most efficient way to perform the sums over the components $k_i$ etc. is to determine ahead of time which contractions are allowed and sum only over those.  Moreover, many allowed contractions are equivalent, if the external states have repeated values of $k$ in $\bk$; e.g. if $\bk=(4,2,2,2,1)$, then swapping two different contractions on the $2$s  with each other obviously does not change the result.  Both of these considerations are most easily taken into account by representing the monomials $\bk$ as a vector $\avec$ of their `bincounts'  {\tt BC}$_k$ of the number of times $k$ appears in the vector $\bk$.  The norm $\norm{\bk}$ of the vector $\bk$ is also simpler in terms of $\avec$:
+\be
+\norm{\avec} \equiv \norm{\bk} = \prod_k a_k !
+\ee
+Moreover, in terms of bincounts, removing components is just subtraction.  Let $\{k_i\}$ be the vector of $k_i$s to be subtracted, and let $\bar{\avec}$ be the bincounts of $\{k_i\}$.  Then
+\be
+\bk/\{k_i\} = \avec- \bar{\avec}.
+\ee
+
+Before we derive the symmetry factors, let us peak at the answer. If one looks in {\tt MatrixElements-Mixon-Yukawa.wl}, in the subroutine {\tt yukawaQuartic} that computes the contribution to (\ref{eq:yukawaquarticRQ}) from individual monomials, one finds the following lines
+
+\ 
+
+\noindent
+\verb|symFactor=2*(Times@@Table[| \\
+\verb|		Sqrt[ Binomial[a[[k]],aBar[[k]] ]/(aBar[[k]]!) ],| \\
+\verb|		{k,DeleteDuplicates[k|$\phi$\verb|]}| \\
+\verb|	])*(Times@@Table[| \\
+\verb|		Sqrt[ Binomial[ap[[kp]],apBar[[kp]] ]/(apBar[[kp]]!) ],|\\
+\verb|		{kp,DeleteDuplicates[k|$\phi$\verb|p]}|\\
+\verb|	]);|
+
+which in standard notation is
+\be\label{eq:symFactorYukawa}
+S_{\rm sym} \equiv 2 \times   \sqrt{ 
+    \prod_{k} \frac{1}{\bar a_k!} \binom{a_k}{\bar a_k}  \times
+    \prod_{k} \frac{1}{\bar a_k^\prime!}\binom{a_k^\prime}{\bar a_k^\prime}
+    } \, .
+%    2 \prod_{k} \binom{a_k}{\bar a_k} \binom{a_k^\prime}{\bar a_k^\prime}
+\ee
+To understand how this factor comes about, first recall that the code normalizes monomials using the natural radial quantization norm  (\ref{eq:CodeMonNormalization}). In this convention, the Gram matrix for monomials is simply the identity matrix.  This normalization allows the primary operators to be orthonormalized according to the Zamolodchikov metric (so that $\< \CO| \CO'\> = \delta_{\CO \CO'}$) simply by orthonormalizing them as vectors expressed in the basis of monomials. For instance, the primary operator in (\ref{eq:ExampleScalarPrimary}), reproduced here for convenience,
+\be
+\ket{\CO} = 0.755929 \rket{ \p^3 \phi (\p\phi)^2 } -0.654654 \rket{ (\p^2 \phi)^2 \p\phi} ,
+\ee
+is simply the unit-norm vector $(0.755929,-0.654654)$ in the monomial basis.  So, comparing the first and last lines in (\ref{eq:AllReps}), we see that the coefficients $C_{\bk, \rm RQ}^{\CO}$ of the radial quantization monomial states are related to the coefficients $C_{\bk}^{\CO}$ of the position space monomial operators is
+\be
+C_{\bk, \rm RQ}^{\CO} = C_{\bk}^{\CO} \CN_{\bk} \norm{\bk},
+\ee
+where we have assumed that the operator $\CO$ is normalized so that $\< \CO | \CO\>=1$. Note that with this normalization for $\CO(x)$,  the momentum space state $| \CO, p\>$ has inner product given by
+\be
+G_{\CO \CO} = \frac{\pi  }{\Gamma(2\Delta) N_{\CO}^2} \quad  \Rightarrow \quad  N_{\CO} = \sqrt{\frac{\pi}{ \Gamma(2 \Delta)}} .
+\ee
+Finally, recall that
+\be
+N_{\rm FT} = \frac{2 \pi^2}{\Gamma(\Delta+\Delta'-1)}.
+\ee
+Now, we may rewrite the formula for the Yukawa quartic matrix elements as
+\be
+\Mcal_{\cO \cO^\prime}^{(g^2 \phi \psi \frac{1}{\partial} \phi \psi)} &=& g^2 \frac{(-1)^{\Delta-\Delta'}\sqrt{\Gamma(2\Delta)\Gamma(2\Delta')}}{4 \pi \Gamma(\Delta+\Delta'-1)} \nn\\ &\times&  \sum_{\bk, \bk'} \left[  C^{\cO}_{\bk, \rm RQ} \, C^{\cO'}_{\bk^\prime, \rm RQ}  \sum_{\bk/\{k_i| s_i=1\} = \atop  \bk'/\{k_i | s_i =-1 \}}(-1)^{\sigma(\{k_i, s_i\}) } \frac{\norm{\avec-\bar{\avec}}^2}{\norm{\avec} \norm{\avec'}}g_{\phi\psi\frac{1}{\p}\phi\psi}(k_i, s_i) \right],  \nn\\
+\ee
+The ratio of  norms can be simplified (note that $\avec-\bar\avec = \avec^\prime-\bar\avec^\prime$) to
+\begin{align}
+    \frac{
+        \left\| \, \avec - \bar\avec \, \right\|^2
+    }{\norm{\avec} \norm{\avec'}} &=  \sqrt{ 
+        \prod_{k} \frac{\Gamma(a_k - \bar a_k + 1)}{\Gamma(a_k + 1)}
+        \frac{\Gamma(a_k^\prime - \bar a_k^\prime + 1)}{\Gamma(a_k^\prime + 1)}
+    }
+\end{align}
+where the only contribution come from where $\bar a_k \neq 0$ or $\bar a_k^\prime \neq 0$. 
+
+
+
+
+%We can absorb this factor into the symmetry factor $S_{\rm sym}$
+%\begin{align}\label{yukawa-symfactor}
+%\tilde S_{\rm sym} \equiv S_{\rm sym} \times \sqrt{ 
+%        \prod_{k} \frac{\Gamma(a_k - \bar a_k + 1)}{\Gamma(a_k + 1)}
+%        \frac{\Gamma(a_k^\prime - \bar a_k^\prime + 1)}{\Gamma(a_k^\prime + 1)}
+%    }
+%\end{align}
+%
+%
+%\paragraph{Contraction channels and symmetry factors}~
+%
+%We can represent the $k$ and $k^\prime$'s contracted from $\kvec$ and $\kvec^\prime$ in occupation number representation $(\bar \avec, \bar \bvec)$ and $(\bar \avec^\prime, \bar \bvec^\prime)$. The states have to be identicle after contraction means
+%\begin{align}
+%	\kvec / \bar\kvec = \kvec^\prime / \bar \kvec^\prime 
+%	\iff \left\{
+%	\begin{array}{cc}
+%		\avec - \bar \avec = \avec^\prime - \bar \avec^\prime \\
+%		\bvec - \bar \bvec = \bvec^\prime - \bar \bvec^\prime
+%	\end{array}
+%	 \right\} \,.
+%\end{align} 
+%Given a pair $\kvec$ and $\kvec^\prime$, we can decide if Yukawa contraction is possible and the type of the contraction by taking the difference of occupation numbers
+%\begin{align}
+%	\delta \avec &= \avec - \avec^\prime \nn \\
+%	\delta \bvec &= \bvec - \bvec^\prime \, ,
+%\end{align}
+%and a contraction is possible if for each sector the sum of the {\it absolute value} of each element, $\abs{\delta\avec}$, $\abs{\delta\bvec}$, are 0 or 2. 
+%% We can further decide the change of particle number in each sector
+%% \begin{align}
+%% 	\delta n_\phi &= \sum\abs{\delta\avec \Theta(\delta\avec)} - \sum\abs{\delta\avec \Theta(-\delta\avec)} \nn \\
+%% 	\delta n_\psi &= \sum\abs{\delta\bvec \Theta(\delta\bvec)} - \sum\abs{\delta\bvec \Theta(-\delta\bvec)} 
+%% \end{align}
+%For the sector(s) which have sum 2, the contraction is decided by taking the positive part and negative part from $\delta\avec$ or $\delta\bvec$
+%\begin{align}
+%	&\bar \avec = \delta\avec \Theta(\delta\avec), ~ 
+%	\bar \avec^\prime = \delta\avec \Theta(-\delta\avec), \text{  if } \abs{\delta\avec} = 2 \nn \\
+%	&\bar \bvec = \delta\bvec \Theta(\delta\bvec), ~ 
+%	\bar \bvec^\prime = \delta\bvec \Theta(-\delta\bvec), \text{  if } \abs{\delta\bvec} = 2 \, .
+%\end{align}
+%If for any sectors the sum is zero, then we need to pick a particle from each side with the same $k$, denote as $k_f$ and include them in $\bar \avec$ and $\bar \avec^\prime$
+%\begin{align}
+%	\bar \avec = \bar \avec^\prime = \delta_{k,k_f}, \text{  if } \abs{\delta\avec} = 0 \nn \\
+%	\bar \bvec = \bar \bvec^\prime = \delta_{k,k_f}, \text{  if } \abs{\delta\bvec} = 0 \, ,
+%\end{align}
+%iterate $k_f$ in $\kvec_\phi$ or $\kvec_\psi$ and sum all. 
+
+Next, for any fixed choice of the $\{k_i\}$s and $\{k_j'\}$s to be contracted from the external states, there is a combinatoric factor for all the permutations among equivalent contractions:
+%  In both cases, the number of contractions, due to $\phi$ contracting with an $n$-fold degenerate level, $[\phi, a_k^\dagger a_k^\dagger \cdots a_k^\dagger] \propto n$, is
+\begin{align}\label{yukawa-contra-num}
+    S_{\rm contra} = \binom{\avec}{\bar \avec} \binom{\avec^\prime}{\bar \avec^\prime} \equiv \prod_{k} \binom{a_k}{\bar a_k} \binom{a_k^\prime}{\bar a_k^\prime} .
+\end{align}
+
+
+Finally, in each case there will be exactly 4 associations because we can swap $1\leftrightarrow 3$ and/or $2\leftrightarrow 4$. If we swap both, the result is invariant, so we include only half of them and multiply by two.  
+
+Putting everything together, we obtain
+%\begin{align}\label{yukawa-sym-num}
+%    S_{\rm sym} = 2 \times S_{\rm contra}\, .
+%\end{align}
+%The $\tilde S_{\rm sym}$ factor also contains a factor of $a_k$'s, (\ref{yukawa-symfactor}), which can be simplified altogether with $S_{\rm contra}$. Note that both the new factor and $S_{\rm contra}$ contain only the contribution from levels $\bar a_k \neq 0$ or $\bar a_k^\prime \neq 0$, so the product of them still only contains the contracted levels:
+\begin{align}\label{yukawa-full-sym-factor}
+     S_{\rm sym} &= 2 \times  \prod_{k} \binom{a_k}{\bar a_k} \binom{a_k^\prime}{\bar a_k^\prime} \times \sqrt{ 
+        \frac{\Gamma(a_k - \bar a_k + 1)}{\Gamma(a_k + 1)}
+        \frac{\Gamma(a_k^\prime - \bar a_k^\prime + 1)}{\Gamma(a_k^\prime + 1)}
+    } \nn \\
+    &= 2 \times   \sqrt{ 
+    \prod_{k} \frac{1}{\bar a_k!} \binom{a_k}{\bar a_k}  \times
+    \prod_{k} \frac{1}{\bar a_k^\prime!}\binom{a_k^\prime}{\bar a_k^\prime}
+    } \, .
+\end{align}
+
+There is also a symmetry factor for the cubic Yukawa interaction $\phi \psi \frac{1}{\partial} \psi$, but it follows easily from the above analysis.  The only difference is that because there is only one $\phi$ in the interaction, there is no factor of 2 from swapping in and out contractions, and moreover all the $\bar{a}$ and $\bar{a}'$ entries must be zero except for the one corresponding to the $\phi$ contraction.  Let us assume without loss of generality that the nonzero contraction is $\bar{a}_k=1$.  Then the symmetry factor in this case is
+\be\label{eq:symFactorYukawaCubic}
+S_{\rm sym} &=&  \sqrt{ 
+    \frac{1}{\bar a_k!} \binom{a_k}{\bar a_k} } =  \sqrt{a_k}.
+\ee
+
+\paragraph{Supercharge} 
+In the code packages we also introduced the matrix elements of the supercharge. The derivation of the radial quantization formulae is straightforward, and we list the results as the following
+\begin{align}
+\label{eq:PMRQ}
+\left.
+\Mcal_{\CO \CO^\prime}^{(2 \partial\phi \psi)}
+\right|_{s_{\psi} = 1} &=
+2\frac{(-1)^{\Delta-\Delta'+1/2}N_{\rm FT}}{(4\pi)N_{\CO} N_{\CO'}} \nn \\
+& \times  \sum_{\bk, \bk'} \left[  C^{\cO}_{\bk} \, C^{\cO'}_{\bk^\prime} \, \Ncal^{(M)}_{\bk}\, \Ncal^{(M)}_{\bk'}  \sum_{\bk/\{k_i| s_i=1\} = \atop  \bk'/\{k_i | s_i =-1 \}}(-1)^{\sigma(\{k_i, s_i\}) }  \norm{\bk/\{k_i\}}^2 g_{\partial\phi\psi}(k_i, s_i) \right],
+\end{align}
+\begin{align}
+\label{eq:PP2RQ}
+\left.
+\Mcal_{\CO \CO^\prime}^{(\sqrt{2}m \phi \psi)} 
+\right|_{s_{\psi} = 1} &=
+\sqrt{2}m \frac{(-1)^{\Delta-\Delta'-1/2}N_{\rm FT}}{(4\pi)N_{\CO} N_{\CO'}} \nn \\
+& \times  \sum_{\bk, \bk'} \left[  C^{\cO}_{\bk} \, C^{\cO'}_{\bk^\prime} \, \Ncal^{(M)}_{\bk}\, \Ncal^{(M)}_{\bk'}  \sum_{\bk/\{k_i| s_i=1\} = \atop  \bk'/\{k_i | s_i =-1 \}}(-1)^{\sigma(\{k_i, s_i\}) }  \norm{\bk/\{k_i\}}^2 g_{\phi\psi}(k_i, s_i) \right],
+\end{align}
+\begin{align}
+\label{eq:PP3RQ}
+\left.
+\Mcal_{\CO \CO^\prime}^{(\frac{g}{\sqrt{2}} \phi^2 \psi)}
+\right|_{s_{\psi} = 1}  &=
+\frac{g}{\sqrt{2}} \frac{(-1)^{\Delta-\Delta'+1/2}N_{\rm FT}}{(4\pi)^{3/2}N_{\CO} N_{\CO'}} \nn \\
+& \times  \sum_{\bk, \bk'} \left[  C^{\cO}_{\bk} \, C^{\cO'}_{\bk^\prime} \, \Ncal^{(M)}_{\bk}\, \Ncal^{(M)}_{\bk'}  \sum_{\bk/\{k_i| s_i=1\} = \atop  \bk'/\{k_i | s_i =-1 \}}(-1)^{\sigma(\{k_i, s_i\}) }  \norm{\bk/\{k_i\}}^2 g_{\phi^2\psi}(k_i, s_i) \right].
+\end{align}
+In the above equations, without loss of generality, we assume $s_{\psi} = 1$, which means the only internal fermion operator contracts with the ket state. The matrix elements where the internal fermion contracts with the bra state can be obtained from the fact that $Q_+$ and $Q_-$ are Hermitian. Like in the Yukawa interaction case, 
+if one looks at {\tt MatrixElements-Mixon-QPlus.wl}, in the subroutine {\tt qPlusInt} which computes the individual monomials' contribution to the $\phi^2\psi$ matrix elements, one finds the ${\tt symFactor}$ lines which in standard notation is
+\be
+S_{\rm sym}^{(\frac{1}{2}\phi^2\psi)} \equiv    \sqrt{ 
+    \prod_{k} \frac{1}{\bar a_k!} \binom{a_k}{\bar a_k}  \times
+    \prod_{k} \frac{1}{\bar a_k^\prime!}\binom{a_k^\prime}{\bar a_k^\prime}
+    } \, .
+\ee
+The factor is similar to (\ref{eq:symFactorYukawa}) but the factor 2 is gone, because we 
+choose the convention that $Q_+ = \sqrt{2}\left( m\phi + \frac{g}{2}\phi^2 \right)\psi$ so that the $\frac{1}{2}$ cancels the factor 2 from swapping the two internal $\phi$'s. The corresponding symmetry factors of the quadratic $Q_+$ term and $Q_-$ term are the same as (\ref{eq:symFactorYukawaCubic}).
+
+% We also introduced the generating functions $g_{\partial\phi\psi}$, $g_{\phi\psi}$ and $g_{\phi^2\psi}$ whose derivation is straightforward. The results are listed as the following
+% \begin{align}
+% g_{\phi_1\psi_2} (k_1,s_1;k_2,s_2) \equiv&\, \frac{\tilde g_{\phi_1\psi_2} (k_1,s_1;k_2,s_2)}{\sqrt{k_1 k_2 (k_2+1)}} \nn \\
+% \left.\tilde g_{\phi_1\psi_2}(k_1,s_1;k_2,s_2)
+% \right|_{s_2 = +1} =&\, 
+% \begin{cases}
+%   k_1 & 0 < k_1 \leq k_2 \\
+%   0 & {\rm else}
+%   \end{cases} \\
+% g_{\phi_0\phi_1\psi_2} (k_0,s_0;k_1,s_1;k_2,s_2) \equiv&\, 
+% \frac{\tilde g_{\phi_0\phi_1\psi_2} (k_0,s_0;k_1,s_1;k_2,s_2)}{\sqrt{k_0 k_1 k_2 (k_2+1)}}
+% \nn \\
+% \left.\tilde g_{\phi_0\phi_1\psi_2} (k_0,s_0;k_1,s_1;k_2,s_2)
+% \right|_{s_2 = +1} =&\, \tilde g_{\phi\psi}\big(-(s_0 k_0 + s_1 k_1), -1; k_2, +1\big) \nn \\
+%   &~- \tilde g_{\phi\psi}(-s_0 k_0, -1; k_2, +1) \nn \\
+%   &~- \tilde g_{\phi\psi}(-s_1 k_1, -1; k_2, +1) \\
+% g_{\partial\phi_1\psi_2} (k_1,s_1;k_2,s_2) \equiv&\, \frac{\tilde g_{\partial\phi_1\psi_2} (k_1,s_1;k_2,s_2)}{\sqrt{k_1 k_2 (k_2+1)}} \nn \\
+% \left.\tilde g_{\partial\phi_1\psi_2}(k_1,s_1;k_2,s_2)
+% \right|_{s_2 = +1} =&\, 
+% k_2(k_2+1) \times \begin{cases}
+%   1 & k_1 = k_2+1 \\
+%   -1 & k_1 = k_2 \\
+%   0 & {\rm else}
+%   \end{cases}
+% \end{align}
+
+
+\subsection{Utility Functions}
+
+A few subroutines are used in most of the packages, and we collect them in the context {\tt utilities}.  To avoid potential user-end compilation-time errors, we have put a copy of these routines in each of the packages, %where they are used, 
+rather than in a single file that the packages could link to.  
+
+\begin{itemize}
+
+\item {\tt monomialsBoson[n,deg]} and {\tt monomialsFermion[n,deg]}\\
+These subroutines each create an ordered list of all monomials with a given particle number {\tt n} and degree {\tt deg}. It is crucial that this subroutine has the {\it same} definition in all packages, because many higher-level functions assume that the monomials are ordered in the way defined implicitly in these functions (see for instance the example above equation (\ref{eq:ExampleScalarPrimary}).  
+
+\item {\tt cfBinCount} and {\tt cfBinReconstruct}\\
+These subroutines are used to go back and forth between two representations of the monomials.  The first representation is as a vector $\bk$ of the number of derivatives acting on each $\phi$ in the monomial, i.e. $\bk$ refers to $\p^{\bk} \phi = \p^{k_1} \phi \dots \p^{k_n} \phi$.  This representation is very natural in the Fock space and Wick Contraction methods.  The second representation is as a vector $\bb$ of bincounts {\tt BC}$_k$ of the number of times $k$ appears in the vector $\bk$. This representation is very natural in the Radial Quantization method, where monomials are converted to an oscillator representation.  The subroutine {\tt cfBinCount} converts $\bk$ to $\bb$, and the subroutine {\tt cfBinReconstruct} converts $\bb$ to $\bk$.\footnote{Mathematica has its own subroutine {\tt BinCounts}, but we have found it is significantly slower than {\tt cfBinCount}. } Formally, one can think of $\bb$ as an infinite length vector, with only a finite number of nonzero entries, but in practice one can make it a finite length vector by truncating as long as all the nonzero entries are retained. 
+
+\item {\tt flattenMixonStates[basisMixon]} and {\tt flattenMixonMatrix[mat]}\\
+These subroutines are used to un-wrap the output of the mixon code and obtain the basis as a 1-D list and interaction matrices as 2-D matrices.  
+\begin{itemize}
+\item {\tt basisMixon} is the output of {\tt computeMixonBasis[]} in {\tt Basis-Mixon.wl}, which is organized as a nested list according to the number of scalars and fermions. {\tt flattenMixonStates[basisMixon]} outputs a 1-D array where each element is a basis state. 
+\item If we look at the output of {\tt computeXXXXMatrices[]} in the mixon packages {\tt MatrixElements-Mixon-XXXX.wl}, they are also organized as nested lists accoding to the number of scalars and fermions of the in- and out- states. {\tt flattenMixonMatrix[mat]}, where {\tt mat} stands for the nested list just mentioned, outputs a 2-D square matrix where the order of rows and columns is the same as the output of {\tt flattenMixonStates[basisMixon]}.
+\end{itemize}
+
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,460 @@
+matPhi3NtoN1 = Table[If[phi3Code`Private`nBL + 1 == phi3Code`Private`nBR && 
+       phi3Code`Private`nFL == phi3Code`Private`nFR, 
+      Catch[ArrayFlatten[Outer[phi3Code`Private`primBlockNtoNPlus[1], 
+         (If[Length[#1] == 0, Throw[{}], #1] & )[
+          Insert[PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{}, 
+             Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], 
+             {{}}]][[phi3Code`Private`nBL + 1,phi3Code`Private`nFL + 1]]], 
+         (If[Length[#1] == 0, Throw[{}], #1] & )[
+          Insert[PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{}, 
+             Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], 
+             {{}}]][[phi3Code`Private`nBR + 1,phi3Code`Private`nFR + 1]]], 
+         1]]], SparseArray[{}, {phi3Code`Private`stateCount[
+         Insert[PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{}, 
+            Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], {{}}]][[
+          phi3Code`Private`nBL + 1,phi3Code`Private`nFL + 1]]], 
+        phi3Code`Private`stateCount[Insert[PadRight[{}, Insert[0, 0, 2], 
+            {{}}], PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{1, 1}, 
+            Insert[0, 0, 2], {{}}]][[phi3Code`Private`nBR + 1,
+          phi3Code`Private`nFR + 1]]]}]], {phi3Code`Private`nBL, 0, 2}, 
+     {phi3Code`Private`nBR, 0, 2}, {phi3Code`Private`nFL, 0, -1 + {3}[[2]]}, 
+     {phi3Code`Private`nFR, 0, -1 + {3}[[2]]}]
+ 
+phi3Code`Private`primBlockNtoNPlus[phi3Code`Private`dnB_] = 
+    Function[{phi3Code`Private`level1, phi3Code`Private`level2}, 
+     With[{phi3Code`Private`lL = phi3Code`Private`level1["l"], 
+       phi3Code`Private`lR = phi3Code`Private`level2["l"], 
+       phi3Code`Private`degBL = phi3Code`Private`level1["degB"], 
+       phi3Code`Private`degBR = phi3Code`Private`level2["degB"], 
+       phi3Code`Private`degFL = phi3Code`Private`level1["degF"], 
+       phi3Code`Private`degFR = phi3Code`Private`level2["degF"], 
+       phi3Code`Private`nB = phi3Code`Private`level1["nB"], 
+       phi3Code`Private`nF = phi3Code`Private`level2["nF"]}, 
+      SparseArray[Outer[Total[Table[Flatten[#1[[phi3Code`Private`kL + 1]]] . 
+             phi3Code`Private`monomialBlock[{phi3Code`Private`nB, 
+               phi3Code`Private`nB + phi3Code`Private`dnB}, 
+              phi3Code`Private`nF, {phi3Code`Private`degBL + 
+                phi3Code`Private`kL, phi3Code`Private`degBR + 
+                phi3Code`Private`kR}, {phi3Code`Private`degFL + 
+                phi3Code`Private`lL - phi3Code`Private`kL, 
+               phi3Code`Private`degFR + phi3Code`Private`lR - 
+                phi3Code`Private`kR}] . Flatten[#2[[phi3Code`Private`kR + 
+                1]]], {phi3Code`Private`kL, 0, phi3Code`Private`lL}, 
+            {phi3Code`Private`kR, 0, phi3Code`Private`lR}], 2] & , 
+         phi3Code`Private`level1["states"], phi3Code`Private`level2[
+          "states"], 1]]*phi3Code`Private`factor[phi3Code`Private`nB + 
+         (3*phi3Code`Private`nF)/2 + phi3Code`Private`degBL + 
+         phi3Code`Private`degFL + phi3Code`Private`lL, 
+        (phi3Code`Private`nB + phi3Code`Private`dnB) + 
+         (3*phi3Code`Private`nF)/2 + phi3Code`Private`degBR + 
+         phi3Code`Private`degFR + phi3Code`Private`lR]*
+       phi3Code`Private`factorM[3]]]
+ 
+phi3Code`Private`monomialBlock[{phi3Code`Private`nBL_, 
+      phi3Code`Private`nBR_}, phi3Code`Private`nF_, 
+     {phi3Code`Private`degB1_, phi3Code`Private`degB2_}, 
+     {phi3Code`Private`degF1_, phi3Code`Private`degF2_}] := 
+    phi3Code`Private`monomialBlock[{phi3Code`Private`nBL, 
+       phi3Code`Private`nBR}, phi3Code`Private`nF, {phi3Code`Private`degB1, 
+       phi3Code`Private`degB2}, {phi3Code`Private`degF1, 
+       phi3Code`Private`degF2}] = 
+     With[{phi3Code`Private`a1List = (phi3Code`Private`cfBinCount[#1, 
+           Max[phi3Code`Private`degB1, phi3Code`Private`degB2] + 1] & ) /@ 
+         phi3Code`Private`monomialsBoson[phi3Code`Private`nBL, 
+          phi3Code`Private`degB1], phi3Code`Private`a2List = 
+        (phi3Code`Private`cfBinCount[#1, Max[phi3Code`Private`degB1, 
+             phi3Code`Private`degB2] + 1] & ) /@ 
+         phi3Code`Private`monomialsBoson[phi3Code`Private`nBR, 
+          phi3Code`Private`degB2], phi3Code`Private`b1List = 
+        (phi3Code`Private`cfBinCount[#1, Max[phi3Code`Private`degF1, 
+             phi3Code`Private`degF2] + 1] & ) /@ 
+         phi3Code`Private`monomialsFermion[phi3Code`Private`nF, 
+          phi3Code`Private`degF1], phi3Code`Private`b2List = 
+        (phi3Code`Private`cfBinCount[#1, Max[phi3Code`Private`degF1, 
+             phi3Code`Private`degF2] + 1] & ) /@ 
+         phi3Code`Private`monomialsFermion[phi3Code`Private`nF, 
+          phi3Code`Private`degF2]}, SparseArray[
+       Outer[phi3Code`Private`monomialMixonContraction, 
+        Flatten[Outer[List, phi3Code`Private`a1List, phi3Code`Private`b1List, 
+          1], 1], Flatten[Outer[List, phi3Code`Private`a2List, 
+          phi3Code`Private`b2List, 1], 1], 1]]]
+ 
+phi3Code`Private`cfBinCount = CompiledFunction[{11, 12., 5468}, 
+     {{_Integer, 1}, _Integer}, {{2, 1, 0}, {2, 0, 0}, {2, 1, 2}}, 
+     {{0, {2, 0, 4}}, {1, {2, 0, 2}}}, {0, 10, 0, 0, 3}, 
+     {{6, 0, 6}, {6, 4, 3}, {35, 6, 2, 2}, {6, 4, 5}, {3, 2}, 
+      {36, 3, 4, 2, 2}, {4, 5, 6, -1}, {33, 0, 6}, {6, 4, 8}, {3, 6}, 
+      {37, 0, 8, 2, 1}, {38, 2, 0, 1, 0, 9}, {37, 0, 8, 2, 1}, {12, 9, 2, 7}, 
+      {39, 2, 0, 1, 0, 7}, {4, 8, 6, -5}, {1}}, 
+     Function[{phi3Code`Private`k, phi3Code`Private`max}, 
+      Module[{phi3Code`Private`lst}, phi3Code`Private`lst = 
+         Table[0, {phi3Code`Private`max}]; 
+        Scan[phi3Code`Private`lst[[#1]]++ & , phi3Code`Private`k]; 
+        phi3Code`Private`lst]], Evaluate, LibraryFunction["/Users/liam/Librar\
+y/Mathematica/ApplicationData/CCompilerDriver/BuildFolder/Macintosh-414-51642\
+/compiledFunction5.dylib", "compiledFunction5", {{Integer, 1, "Constant"}, 
+       {Integer, 0, "Constant"}}, {Integer, 1}]]
+ 
+phi3Code`Private`monomialsBoson[phi3Code`Private`n_, 
+     phi3Code`Private`deg_] := phi3Code`Private`monomialsBoson[
+      phi3Code`Private`n, phi3Code`Private`deg] = 
+     IntegerPartitions[phi3Code`Private`deg + phi3Code`Private`n, 
+      {phi3Code`Private`n}]
+ 
+phi3Code`Private`monomialsFermion[phi3Code`Private`n_, 
+     phi3Code`Private`deg_] := phi3Code`Private`monomialsFermion[
+      phi3Code`Private`n, phi3Code`Private`deg] = 
+     (#1 + Reverse[Range[phi3Code`Private`n] - 1] & ) /@ 
+      phi3Code`Private`monomialsBoson[phi3Code`Private`n, 
+       phi3Code`Private`deg + phi3Code`Private`n - 
+        (phi3Code`Private`n*(phi3Code`Private`n + 1))/2]
+ 
+phi3Code`Private`monomialMixonContraction[{phi3Code`Private`a_, 
+      phi3Code`Private`b_}, {phi3Code`Private`ap_, phi3Code`Private`bp_}] := 
+    If[phi3Code`Private`b != phi3Code`Private`bp, 0, 
+     phi3Code`Private`monomialScalarContraction[3][phi3Code`Private`a, 
+      phi3Code`Private`ap]]
+ 
+Attributes[phi3Code`Private`monomialScalarContraction] = {Orderless}
+ 
+phi3Code`Private`monomialScalarContraction[phi3Code`Private`m_][
+     phi3Code`Private`kCount_, phi3Code`Private`kpCount_] := 
+    phi3Code`Private`monomialScalarContraction[phi3Code`Private`m][
+      phi3Code`Private`kCount, phi3Code`Private`kpCount] = 
+     Block[{phi3Code`Private`max = Length[phi3Code`Private`kCount], 
+       phi3Code`Private`diff, phi3Code`Private`d, phi3Code`Private`cBar, 
+       phi3Code`Private`cpBar, phi3Code`Private`kl, phi3Code`Private`kpl, 
+       phi3Code`Private`kCommonCount, phi3Code`Private`cBarFree, 
+       phi3Code`Private`klFreeSet}, phi3Code`Private`diff = 
+        phi3Code`Private`kCount - phi3Code`Private`kpCount; 
+       phi3Code`Private`d = (phi3Code`Private`m - 
+          Total[Abs[phi3Code`Private`diff]])/2; Switch[phi3Code`Private`d, 0, 
+        phi3Code`Private`cBar = Ramp[phi3Code`Private`diff]; 
+         phi3Code`Private`cpBar = Ramp[-phi3Code`Private`diff]; 
+         phi3Code`Private`kl = phi3Code`Private`cfBinReconstruct[
+           phi3Code`Private`cBar]; phi3Code`Private`kpl = 
+          phi3Code`Private`cfBinReconstruct[phi3Code`Private`cpBar]; 
+         (phi3Code`Private`countingFactor[phi3Code`Private`kCount, 
+            phi3Code`Private`kpCount, phi3Code`Private`cBar, 
+            phi3Code`Private`cpBar]*phi3Code`Private`binomialMinSum[
+            phi3Code`Private`kl, phi3Code`Private`kpl])/
+          Sqrt[Times @@ phi3Code`Private`kl*Times @@ phi3Code`Private`kpl], 
+        _?Positive, phi3Code`Private`cBar = Ramp[phi3Code`Private`diff]; 
+         phi3Code`Private`cpBar = Ramp[-phi3Code`Private`diff]; 
+         phi3Code`Private`kl = phi3Code`Private`cfBinReconstruct[
+           phi3Code`Private`cBar]; phi3Code`Private`kpl = 
+          phi3Code`Private`cfBinReconstruct[phi3Code`Private`cpBar]; 
+         phi3Code`Private`kCommonCount = phi3Code`Private`kCount - 
+           phi3Code`Private`cBar; phi3Code`Private`klFreeSet = 
+          DeleteDuplicatesBy[Subsets[phi3Code`Private`cfBinReconstruct[
+             phi3Code`Private`kCommonCount], {phi3Code`Private`d}], Sort]; 
+         Sum[phi3Code`Private`cBarFree = phi3Code`Private`cfBinCount[
+             phi3Code`Private`klFree, phi3Code`Private`max]; 
+           (phi3Code`Private`countingFactor[phi3Code`Private`kCount, 
+              phi3Code`Private`kpCount, phi3Code`Private`cBar + 
+               phi3Code`Private`cBarFree, phi3Code`Private`cpBar + 
+               phi3Code`Private`cBarFree]*phi3Code`Private`binomialMinSum[
+              Join[phi3Code`Private`kl, phi3Code`Private`klFree], 
+              Join[phi3Code`Private`kpl, phi3Code`Private`klFree]])/
+            Sqrt[Times @@ phi3Code`Private`kl*Times @@ phi3Code`Private`kpl*
+              Times @@ phi3Code`Private`klFree^2], {phi3Code`Private`klFree, 
+           phi3Code`Private`klFreeSet}], _, 0]]
+ 
+phi3Code`Private`cfBinReconstruct = CompiledFunction[{11, 12., 5468}, 
+     {{_Integer, 1}}, {{2, 1, 0}, {2, 1, 2}}, {{0, {2, 0, 5}}, 
+      {4, {2, 0, 1}}, {1, {2, 0, 0}}}, {2, 11, 0, 0, 3}, 
+     {{6, 0, 2}, {6, 0, 6}, {6, 0, 4}, {42, "TotalAll", 2, 1, 0, 2, 0, 1, 2, 
+       0, 3}, {6, 3, 7}, {6, 5, 9}, {35, 7, 2, 2}, {6, 5, 8}, {3, 2}, 
+      {36, 9, 5, 2, 2}, {4, 8, 7, -1}, {6, 0, 4}, {26, 2, 3, 0}, {2, 0, 17}, 
+      {6, 0, 6}, {38, 0, 0, 4, 0, 8}, {26, 6, 8, 1}, {2, 1, 9}, 
+      {39, 2, 0, 2, 0, 4}, {6, 2, 7}, {12, 7, 0, 10}, {6, 10, 2}, {6, 6, 8}, 
+      {12, 8, 0, 7}, {6, 7, 6}, {3, -10}, {6, 4, 9}, {12, 9, 0, 8}, 
+      {6, 8, 4}, {3, -17}, {1}}, Function[{phi3Code`Private`c}, 
+      Module[{phi3Code`Private`i = 1, phi3Code`Private`j = 1, 
+        phi3Code`Private`k = 1, phi3Code`Private`length = 
+         Total[phi3Code`Private`c], phi3Code`Private`reconstruct}, 
+       phi3Code`Private`reconstruct = Table[0, {phi3Code`Private`length}]; 
+        For[phi3Code`Private`k = 1, phi3Code`Private`i <= 
+          phi3Code`Private`length, phi3Code`Private`k++, 
+         For[phi3Code`Private`j = 1, phi3Code`Private`j <= 
+           phi3Code`Private`c[[phi3Code`Private`k]], phi3Code`Private`j++, 
+          phi3Code`Private`reconstruct[[phi3Code`Private`i]] = 
+            phi3Code`Private`k; phi3Code`Private`i++]]; 
+        phi3Code`Private`reconstruct]], Evaluate, LibraryFunction["/Users/lia\
+m/Library/Mathematica/ApplicationData/CCompilerDriver/BuildFolder/Macintosh-4\
+14-51642/compiledFunction6.dylib", "compiledFunction6", 
+      {{Integer, 1, "Constant"}}, {Integer, 1}]]
+ 
+phi3Code`Private`countingFactor[phi3Code`Private`kCount_, 
+     phi3Code`Private`kpCount_, phi3Code`Private`cBar_, 
+     phi3Code`Private`cpBar_] := 
+    Product[Sqrt[Pochhammer[phi3Code`Private`kCount[[
+           phi3Code`Private`\[Lambda]]] - phi3Code`Private`cBar[[
+           phi3Code`Private`\[Lambda]]] + 1, phi3Code`Private`cBar[[
+          phi3Code`Private`\[Lambda]]]]*Pochhammer[
+         phi3Code`Private`kpCount[[phi3Code`Private`\[Lambda]]] - 
+          phi3Code`Private`cpBar[[phi3Code`Private`\[Lambda]]] + 1, 
+         phi3Code`Private`cpBar[[phi3Code`Private`\[Lambda]]]]]/
+      (phi3Code`Private`cBar[[phi3Code`Private`\[Lambda]]]!*
+       phi3Code`Private`cpBar[[phi3Code`Private`\[Lambda]]]!), 
+     {phi3Code`Private`\[Lambda], Length[phi3Code`Private`cBar]}]
+ 
+phi3Code`Private`binomialMinSum[phi3Code`Private`k_, phi3Code`Private`kp_] := 
+    Block[{phi3Code`Private`\[Sigma], phi3Code`Private`\[Sigma]p, 
+      phi3Code`Private`n\[Sigma], phi3Code`Private`n\[Sigma]p}, 
+     {phi3Code`Private`\[Sigma], phi3Code`Private`n\[Sigma]} = 
+       ({Apply[Plus, #1, {1}], (-1)^Length /@ #1} & )[
+        Drop[Subsets[phi3Code`Private`k], 1]]; 
+      {phi3Code`Private`\[Sigma]p, phi3Code`Private`n\[Sigma]p} = 
+       ({Apply[Plus, #1, {1}], (-1)^Length /@ #1} & )[
+        Drop[Subsets[phi3Code`Private`kp], 1]]; phi3Code`Private`n\[Sigma] . 
+       Outer[Min, phi3Code`Private`\[Sigma], phi3Code`Private`\[Sigma]p] . 
+       phi3Code`Private`n\[Sigma]p]
+ 
+phi3Code`Private`factor[phi3Code`Private`\[CapitalDelta]_, 
+     phi3Code`Private`\[CapitalDelta]p_] := 
+    phi3Code`Private`factor[phi3Code`Private`\[CapitalDelta], 
+      phi3Code`Private`\[CapitalDelta]p] = 
+     (Sqrt[Gamma[2*phi3Code`Private`\[CapitalDelta]]*
+         Gamma[2*phi3Code`Private`\[CapitalDelta]p]]*
+       (-1)^(phi3Code`Private`\[CapitalDelta] - 
+         phi3Code`Private`\[CapitalDelta]p))/
+      Gamma[phi3Code`Private`\[CapitalDelta] + 
+        phi3Code`Private`\[CapitalDelta]p - 1]
+ 
+phi3Code`Private`factorM[phi3Code`Private`m_] := 
+    phi3Code`Private`factorM[phi3Code`Private`m] = 
+     (1/Sqrt[4*Pi])^(phi3Code`Private`m - 2)*(-1)^phi3Code`Private`m
+ 
+phi3Code`Private`stateCount[phi3Code`Private`lstOfLevels_] := 
+    Total[(Length[#states] & ) /@ phi3Code`Private`lstOfLevels]
+matPhi3NtoN1 = Table[If[phi3Code`Private`nBL + 1 == phi3Code`Private`nBR && 
+       phi3Code`Private`nFL == phi3Code`Private`nFR, 
+      Catch[ArrayFlatten[Outer[phi3Code`Private`primBlockNtoNPlus[1], 
+         (If[Length[#1] == 0, Throw[{}], #1] & )[
+          Insert[PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{}, 
+             Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], 
+             {{}}]][[phi3Code`Private`nBL + 1,phi3Code`Private`nFL + 1]]], 
+         (If[Length[#1] == 0, Throw[{}], #1] & )[
+          Insert[PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{}, 
+             Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], 
+             {{}}]][[phi3Code`Private`nBR + 1,phi3Code`Private`nFR + 1]]], 
+         1]]], SparseArray[{}, {phi3Code`Private`stateCount[
+         Insert[PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{}, 
+            Insert[0, 0, 2], {{}}], PadRight[{1, 1}, Insert[0, 0, 2], {{}}]][[
+          phi3Code`Private`nBL + 1,phi3Code`Private`nFL + 1]]], 
+        phi3Code`Private`stateCount[Insert[PadRight[{}, Insert[0, 0, 2], 
+            {{}}], PadRight[{}, Insert[0, 0, 2], {{}}], PadRight[{1, 1}, 
+            Insert[0, 0, 2], {{}}]][[phi3Code`Private`nBR + 1,
+          phi3Code`Private`nFR + 1]]]}]], {phi3Code`Private`nBL, 0, 2}, 
+     {phi3Code`Private`nBR, 0, 2}, {phi3Code`Private`nFL, 0, -1 + {3}[[2]]}, 
+     {phi3Code`Private`nFR, 0, -1 + {3}[[2]]}]
+ 
+phi3Code`Private`primBlockNtoNPlus[phi3Code`Private`dnB_] = 
+    Function[{phi3Code`Private`level1, phi3Code`Private`level2}, 
+     With[{phi3Code`Private`lL = phi3Code`Private`level1["l"], 
+       phi3Code`Private`lR = phi3Code`Private`level2["l"], 
+       phi3Code`Private`degBL = phi3Code`Private`level1["degB"], 
+       phi3Code`Private`degBR = phi3Code`Private`level2["degB"], 
+       phi3Code`Private`degFL = phi3Code`Private`level1["degF"], 
+       phi3Code`Private`degFR = phi3Code`Private`level2["degF"], 
+       phi3Code`Private`nB = phi3Code`Private`level1["nB"], 
+       phi3Code`Private`nF = phi3Code`Private`level2["nF"]}, 
+      SparseArray[Outer[Total[Table[Flatten[#1[[phi3Code`Private`kL + 1]]] . 
+             phi3Code`Private`monomialBlock[{phi3Code`Private`nB, 
+               phi3Code`Private`nB + phi3Code`Private`dnB}, 
+              phi3Code`Private`nF, {phi3Code`Private`degBL + 
+                phi3Code`Private`kL, phi3Code`Private`degBR + 
+                phi3Code`Private`kR}, {phi3Code`Private`degFL + 
+                phi3Code`Private`lL - phi3Code`Private`kL, 
+               phi3Code`Private`degFR + phi3Code`Private`lR - 
+                phi3Code`Private`kR}] . Flatten[#2[[phi3Code`Private`kR + 
+                1]]], {phi3Code`Private`kL, 0, phi3Code`Private`lL}, 
+            {phi3Code`Private`kR, 0, phi3Code`Private`lR}], 2] & , 
+         phi3Code`Private`level1["states"], phi3Code`Private`level2[
+          "states"], 1]]*phi3Code`Private`factor[phi3Code`Private`nB + 
+         (3*phi3Code`Private`nF)/2 + phi3Code`Private`degBL + 
+         phi3Code`Private`degFL + phi3Code`Private`lL, 
+        (phi3Code`Private`nB + phi3Code`Private`dnB) + 
+         (3*phi3Code`Private`nF)/2 + phi3Code`Private`degBR + 
+         phi3Code`Private`degFR + phi3Code`Private`lR]*
+       phi3Code`Private`factorM[3]]]
+ 
+phi3Code`Private`monomialBlock[{phi3Code`Private`nBL_, 
+      phi3Code`Private`nBR_}, phi3Code`Private`nF_, 
+     {phi3Code`Private`degB1_, phi3Code`Private`degB2_}, 
+     {phi3Code`Private`degF1_, phi3Code`Private`degF2_}] := 
+    phi3Code`Private`monomialBlock[{phi3Code`Private`nBL, 
+       phi3Code`Private`nBR}, phi3Code`Private`nF, {phi3Code`Private`degB1, 
+       phi3Code`Private`degB2}, {phi3Code`Private`degF1, 
+       phi3Code`Private`degF2}] = 
+     With[{phi3Code`Private`a1List = (phi3Code`Private`cfBinCount[#1, 
+           Max[phi3Code`Private`degB1, phi3Code`Private`degB2] + 1] & ) /@ 
+         phi3Code`Private`monomialsBoson[phi3Code`Private`nBL, 
+          phi3Code`Private`degB1], phi3Code`Private`a2List = 
+        (phi3Code`Private`cfBinCount[#1, Max[phi3Code`Private`degB1, 
+             phi3Code`Private`degB2] + 1] & ) /@ 
+         phi3Code`Private`monomialsBoson[phi3Code`Private`nBR, 
+          phi3Code`Private`degB2], phi3Code`Private`b1List = 
+        (phi3Code`Private`cfBinCount[#1, Max[phi3Code`Private`degF1, 
+             phi3Code`Private`degF2] + 1] & ) /@ 
+         phi3Code`Private`monomialsFermion[phi3Code`Private`nF, 
+          phi3Code`Private`degF1], phi3Code`Private`b2List = 
+        (phi3Code`Private`cfBinCount[#1, Max[phi3Code`Private`degF1, 
+             phi3Code`Private`degF2] + 1] & ) /@ 
+         phi3Code`Private`monomialsFermion[phi3Code`Private`nF, 
+          phi3Code`Private`degF2]}, SparseArray[
+       Outer[phi3Code`Private`monomialMixonContraction, 
+        Flatten[Outer[List, phi3Code`Private`a1List, phi3Code`Private`b1List, 
+          1], 1], Flatten[Outer[List, phi3Code`Private`a2List, 
+          phi3Code`Private`b2List, 1], 1], 1]]]
+ 
+phi3Code`Private`cfBinCount = CompiledFunction[{11, 12., 5468}, 
+     {{_Integer, 1}, _Integer}, {{2, 1, 0}, {2, 0, 0}, {2, 1, 2}}, 
+     {{0, {2, 0, 4}}, {1, {2, 0, 2}}}, {0, 10, 0, 0, 3}, 
+     {{6, 0, 6}, {6, 4, 3}, {35, 6, 2, 2}, {6, 4, 5}, {3, 2}, 
+      {36, 3, 4, 2, 2}, {4, 5, 6, -1}, {33, 0, 6}, {6, 4, 8}, {3, 6}, 
+      {37, 0, 8, 2, 1}, {38, 2, 0, 1, 0, 9}, {37, 0, 8, 2, 1}, {12, 9, 2, 7}, 
+      {39, 2, 0, 1, 0, 7}, {4, 8, 6, -5}, {1}}, 
+     Function[{phi3Code`Private`k, phi3Code`Private`max}, 
+      Module[{phi3Code`Private`lst}, phi3Code`Private`lst = 
+         Table[0, {phi3Code`Private`max}]; 
+        Scan[phi3Code`Private`lst[[#1]]++ & , phi3Code`Private`k]; 
+        phi3Code`Private`lst]], Evaluate, LibraryFunction["/Users/yuan/Librar\
+y/Mathematica/ApplicationData/CCompilerDriver/BuildFolder/Yuans-MacBook-Pro-7\
+6608/compiledFunction43.dylib", "compiledFunction43", 
+      {{Integer, 1, "Constant"}, {Integer, 0, "Constant"}}, {Integer, 1}]]
+ 
+phi3Code`Private`monomialsBoson[phi3Code`Private`n_, 
+     phi3Code`Private`deg_] := phi3Code`Private`monomialsBoson[
+      phi3Code`Private`n, phi3Code`Private`deg] = 
+     IntegerPartitions[phi3Code`Private`deg + phi3Code`Private`n, 
+      {phi3Code`Private`n}]
+ 
+phi3Code`Private`monomialsFermion[phi3Code`Private`n_, 
+     phi3Code`Private`deg_] := phi3Code`Private`monomialsFermion[
+      phi3Code`Private`n, phi3Code`Private`deg] = 
+     (#1 + Reverse[Range[phi3Code`Private`n] - 1] & ) /@ 
+      phi3Code`Private`monomialsBoson[phi3Code`Private`n, 
+       phi3Code`Private`deg + phi3Code`Private`n - 
+        (phi3Code`Private`n*(phi3Code`Private`n + 1))/2]
+ 
+phi3Code`Private`monomialMixonContraction[{phi3Code`Private`a_, 
+      phi3Code`Private`b_}, {phi3Code`Private`ap_, phi3Code`Private`bp_}] := 
+    If[phi3Code`Private`b != phi3Code`Private`bp, 0, 
+     phi3Code`Private`monomialScalarContraction[3][phi3Code`Private`a, 
+      phi3Code`Private`ap]]
+ 
+Attributes[phi3Code`Private`monomialScalarContraction] = {Orderless}
+ 
+phi3Code`Private`monomialScalarContraction[phi3Code`Private`m_][
+     phi3Code`Private`kCount_, phi3Code`Private`kpCount_] := 
+    phi3Code`Private`monomialScalarContraction[phi3Code`Private`m][
+      phi3Code`Private`kCount, phi3Code`Private`kpCount] = 
+     Block[{phi3Code`Private`max = Length[phi3Code`Private`kCount], 
+       phi3Code`Private`diff, phi3Code`Private`d, phi3Code`Private`cBar, 
+       phi3Code`Private`cpBar, phi3Code`Private`kl, phi3Code`Private`kpl, 
+       phi3Code`Private`kCommonCount, phi3Code`Private`cBarFree, 
+       phi3Code`Private`klFreeSet}, phi3Code`Private`diff = 
+        phi3Code`Private`kCount - phi3Code`Private`kpCount; 
+       phi3Code`Private`d = (phi3Code`Private`m - 
+          Total[Abs[phi3Code`Private`diff]])/2; Switch[phi3Code`Private`d, 0, 
+        phi3Code`Private`cBar = Ramp[phi3Code`Private`diff]; 
+         phi3Code`Private`cpBar = Ramp[-phi3Code`Private`diff]; 
+         phi3Code`Private`kl = phi3Code`Private`cfBinReconstruct[
+           phi3Code`Private`cBar]; phi3Code`Private`kpl = 
+          phi3Code`Private`cfBinReconstruct[phi3Code`Private`cpBar]; 
+         (phi3Code`Private`countingFactor[phi3Code`Private`kCount, 
+            phi3Code`Private`kpCount, phi3Code`Private`cBar, 
+            phi3Code`Private`cpBar]*phi3Code`Private`binomialMinSum[
+            phi3Code`Private`kl, phi3Code`Private`kpl])/
+          Sqrt[Times @@ phi3Code`Private`kl*Times @@ phi3Code`Private`kpl], 
+        _?Positive, phi3Code`Private`cBar = Ramp[phi3Code`Private`diff]; 
+         phi3Code`Private`cpBar = Ramp[-phi3Code`Private`diff]; 
+         phi3Code`Private`kl = phi3Code`Private`cfBinReconstruct[
+           phi3Code`Private`cBar]; phi3Code`Private`kpl = 
+          phi3Code`Private`cfBinReconstruct[phi3Code`Private`cpBar]; 
+         phi3Code`Private`kCommonCount = phi3Code`Private`kCount - 
+           phi3Code`Private`cBar; phi3Code`Private`klFreeSet = 
+          DeleteDuplicatesBy[Subsets[phi3Code`Private`cfBinReconstruct[
+             phi3Code`Private`kCommonCount], {phi3Code`Private`d}], Sort]; 
+         Sum[phi3Code`Private`cBarFree = phi3Code`Private`cfBinCount[
+             phi3Code`Private`klFree, phi3Code`Private`max]; 
+           (phi3Code`Private`countingFactor[phi3Code`Private`kCount, 
+              phi3Code`Private`kpCount, phi3Code`Private`cBar + 
+               phi3Code`Private`cBarFree, phi3Code`Private`cpBar + 
+               phi3Code`Private`cBarFree]*phi3Code`Private`binomialMinSum[
+              Join[phi3Code`Private`kl, phi3Code`Private`klFree], 
+              Join[phi3Code`Private`kpl, phi3Code`Private`klFree]])/
+            Sqrt[Times @@ phi3Code`Private`kl*Times @@ phi3Code`Private`kpl*
+              Times @@ phi3Code`Private`klFree^2], {phi3Code`Private`klFree, 
+           phi3Code`Private`klFreeSet}], _, 0]]
+ 
+phi3Code`Private`cfBinReconstruct = CompiledFunction[{11, 12., 5468}, 
+     {{_Integer, 1}}, {{2, 1, 0}, {2, 1, 2}}, {{0, {2, 0, 5}}, 
+      {4, {2, 0, 1}}, {1, {2, 0, 0}}}, {2, 11, 0, 0, 3}, 
+     {{6, 0, 2}, {6, 0, 6}, {6, 0, 4}, {42, "TotalAll", 2, 1, 0, 2, 0, 1, 2, 
+       0, 3}, {6, 3, 7}, {6, 5, 9}, {35, 7, 2, 2}, {6, 5, 8}, {3, 2}, 
+      {36, 9, 5, 2, 2}, {4, 8, 7, -1}, {6, 0, 4}, {26, 2, 3, 0}, {2, 0, 17}, 
+      {6, 0, 6}, {38, 0, 0, 4, 0, 8}, {26, 6, 8, 1}, {2, 1, 9}, 
+      {39, 2, 0, 2, 0, 4}, {6, 2, 7}, {12, 7, 0, 10}, {6, 10, 2}, {6, 6, 8}, 
+      {12, 8, 0, 7}, {6, 7, 6}, {3, -10}, {6, 4, 9}, {12, 9, 0, 8}, 
+      {6, 8, 4}, {3, -17}, {1}}, Function[{phi3Code`Private`c}, 
+      Module[{phi3Code`Private`i = 1, phi3Code`Private`j = 1, 
+        phi3Code`Private`k = 1, phi3Code`Private`length = 
+         Total[phi3Code`Private`c], phi3Code`Private`reconstruct}, 
+       phi3Code`Private`reconstruct = Table[0, {phi3Code`Private`length}]; 
+        For[phi3Code`Private`k = 1, phi3Code`Private`i <= 
+          phi3Code`Private`length, phi3Code`Private`k++, 
+         For[phi3Code`Private`j = 1, phi3Code`Private`j <= 
+           phi3Code`Private`c[[phi3Code`Private`k]], phi3Code`Private`j++, 
+          phi3Code`Private`reconstruct[[phi3Code`Private`i]] = 
+            phi3Code`Private`k; phi3Code`Private`i++]]; 
+        phi3Code`Private`reconstruct]], Evaluate, LibraryFunction["/Users/yua\
+n/Library/Mathematica/ApplicationData/CCompilerDriver/BuildFolder/Yuans-MacBo\
+ok-Pro-76608/compiledFunction44.dylib", "compiledFunction44", 
+      {{Integer, 1, "Constant"}}, {Integer, 1}]]
+ 
+phi3Code`Private`countingFactor[phi3Code`Private`kCount_, 
+     phi3Code`Private`kpCount_, phi3Code`Private`cBar_, 
+     phi3Code`Private`cpBar_] := 
+    Product[Sqrt[Pochhammer[phi3Code`Private`kCount[[
+           phi3Code`Private`\[Lambda]]] - phi3Code`Private`cBar[[
+           phi3Code`Private`\[Lambda]]] + 1, phi3Code`Private`cBar[[
+          phi3Code`Private`\[Lambda]]]]*Pochhammer[
+         phi3Code`Private`kpCount[[phi3Code`Private`\[Lambda]]] - 
+          phi3Code`Private`cpBar[[phi3Code`Private`\[Lambda]]] + 1, 
+         phi3Code`Private`cpBar[[phi3Code`Private`\[Lambda]]]]]/
+      (phi3Code`Private`cBar[[phi3Code`Private`\[Lambda]]]!*
+       phi3Code`Private`cpBar[[phi3Code`Private`\[Lambda]]]!), 
+     {phi3Code`Private`\[Lambda], Length[phi3Code`Private`cBar]}]
+ 
+phi3Code`Private`binomialMinSum[phi3Code`Private`k_, phi3Code`Private`kp_] := 
+    Block[{phi3Code`Private`\[Sigma], phi3Code`Private`\[Sigma]p, 
+      phi3Code`Private`n\[Sigma], phi3Code`Private`n\[Sigma]p}, 
+     {phi3Code`Private`\[Sigma], phi3Code`Private`n\[Sigma]} = 
+       ({Apply[Plus, #1, {1}], (-1)^Length /@ #1} & )[
+        Drop[Subsets[phi3Code`Private`k], 1]]; 
+      {phi3Code`Private`\[Sigma]p, phi3Code`Private`n\[Sigma]p} = 
+       ({Apply[Plus, #1, {1}], (-1)^Length /@ #1} & )[
+        Drop[Subsets[phi3Code`Private`kp], 1]]; phi3Code`Private`n\[Sigma] . 
+       Outer[Min, phi3Code`Private`\[Sigma], phi3Code`Private`\[Sigma]p] . 
+       phi3Code`Private`n\[Sigma]p]
+ 
+phi3Code`Private`factor[phi3Code`Private`\[CapitalDelta]_, 
+     phi3Code`Private`\[CapitalDelta]p_] := 
+    phi3Code`Private`factor[phi3Code`Private`\[CapitalDelta], 
+      phi3Code`Private`\[CapitalDelta]p] = 
+     (Sqrt[Gamma[2*phi3Code`Private`\[CapitalDelta]]*
+         Gamma[2*phi3Code`Private`\[CapitalDelta]p]]*
+       (-1)^(phi3Code`Private`\[CapitalDelta] - 
+         phi3Code`Private`\[CapitalDelta]p))/
+      Gamma[phi3Code`Private`\[CapitalDelta] + 
+        phi3Code`Private`\[CapitalDelta]p - 1]
+ 
+phi3Code`Private`factorM[phi3Code`Private`m_] := 
+    phi3Code`Private`factorM[phi3Code`Private`m] = 
+     (1/Sqrt[4*Pi])^(phi3Code`Private`m - 2)*(-1)^phi3Code`Private`m
+ 
+phi3Code`Private`stateCount[phi3Code`Private`lstOfLevels_] := 
+    Total[(Length[#states] & ) /@ phi3Code`Private`lstOfLevels]
