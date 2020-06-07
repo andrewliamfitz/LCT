@@ -189,6 +189,15 @@ the output is a square matrix, which is the n-to-(n+2) part of the Hamiltonian u
 The output matrix is stored in the variable fullPhi4NtoNPlus2Matrix.";
 
 
+fullMassMatrix::usage
+
+
+fullPhi4NtoNMatrix::usage
+
+
+fullPhi4NtoNPlus2Matrix::usage
+
+
 Begin["`Private`"]
 
 
