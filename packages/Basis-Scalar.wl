@@ -211,6 +211,37 @@ computeBosonBasis[\[CapitalDelta]max_,prec_]:=With[
 ];
 
 
+(* Diagonalize basis in parallel. At DMax=40 there is a known precision issue and
+higher precision (e.g. prec=40) is required to obtain all linearly independent states. 
+Orthogonalize[] does not parallelize if using arbitrary precision, and we parallelize it
+awkwardly by sending each level to a different kernel. After orthogonalization, the 
+basis can be kept in machine precision as the matrix element code does not suffer from
+precision issues at DMax=40. *)
+computeBosonBasis$parallel[\[CapitalDelta]max_,prec_]:=With[
+	{t1=AbsoluteTime[]},
+	allPrimarySets=Table[
+		Print["t=",AbsoluteTime[]-t1];
+		Print["n@ ",n];
+		Table[
+			PrimarySet[n,deg],{deg,0,\[CapitalDelta]max-n}
+		],
+		{n,1,\[CapitalDelta]max}
+	];
+	Print["t=",AbsoluteTime[]-t1];
+	
+	basisBosonPre={Table[allPrimarySets[[n,deg+1]],{deg,0,\[CapitalDelta]max},{n,1,\[CapitalDelta]max-deg}]};
+	(*basisBoson={Table[orthogonalizeBasis[n,deg,prec][ allPrimarySets[[n,deg+1]] ],{deg,0,\[CapitalDelta]max},{n,1,\[CapitalDelta]max-deg}]};*)
+	LaunchKernels[$ProcessorCount];
+	DistributeDefinitions[orthogonalizeBasis,factorBoson];
+	basisBoson={Table[
+		pset=allPrimarySets[[n,deg+1]];
+		ParallelSubmit[{deg,n,pset},
+			orthogonalizeBasis[n,deg,prec][ pset ]
+		],
+		{deg,0,\[CapitalDelta]max},{n,1,\[CapitalDelta]max-deg}]}
+];
+
+
 (* ::Subsection:: *)
 (*Orthogonalize and normalize the basis*)
 
@@ -283,8 +314,8 @@ PrimarySet[n_,deg_]:=PrimarySet[n,deg]=Block[
 			(* new state = sum_k^dl( PrimCoeff * \[PartialD]^k (low level state) \[PartialD]^(dl-k) (\[PartialD]\[Phi]) ) *)
 			{
 				PrimCoeffs[degP+(n-1),1,dl,#2]
-				*#1.appendOneScalarMap[n-1,#2+degP,dl-#2+1],
-				#1.dBoson[n-1,#2+degP]
+				*#1 . appendOneScalarMap[n-1,#2+degP,dl-#2+1],
+				#1 . dBoson[n-1,#2+degP]
 			}&,
 			PrimarySet[n-1,degP],
 			Range[0,dl]]
